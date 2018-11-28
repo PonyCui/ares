@@ -1,0 +1,13 @@
+{
+  "name": "ares",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web/index.js",
+  "module": "web/index.esm.js",
+  "typings": "types/ares.d.ts",
+  "scripts": {
+    "build:web": "cd web && tsc index.ts --target es5 && mv index.js index.esm.js && browserify index.esm.js > index.js --standalone ares"
+  },
+  "author": "PonyCui",
+  "license": "MIT"
+}

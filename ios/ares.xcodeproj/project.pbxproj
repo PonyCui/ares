@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		630F002021AE83680009D721 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F001F21AE83680009D721 /* AppDelegate.m */; };
+		630F002321AE83680009D721 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F002221AE83680009D721 /* ViewController.m */; };
+		630F002621AE83680009D721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630F002421AE83680009D721 /* Main.storyboard */; };
+		630F002821AE83690009D721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630F002721AE83690009D721 /* Assets.xcassets */; };
+		630F002B21AE83690009D721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630F002921AE83690009D721 /* LaunchScreen.storyboard */; };
+		630F002E21AE83690009D721 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F002D21AE83690009D721 /* main.m */; };
+		630F003721AE83CF0009D721 /* drawCircle.js in Resources */ = {isa = PBXBuildFile; fileRef = 630F003621AE83CE0009D721 /* drawCircle.js */; };
+		630F003A21AE856E0009D721 /* ARESView.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F003921AE856E0009D721 /* ARESView.m */; };
+		630F003D21AE861C0009D721 /* ARESScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F003C21AE861C0009D721 /* ARESScript.m */; };
+		630F004021AE86400009D721 /* ARESHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F003F21AE86400009D721 /* ARESHandler.m */; };
+		630F004321AE89450009D721 /* ARESCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004221AE89450009D721 /* ARESCommand.m */; };
+		630F004721AE8D200009D721 /* ARESFillStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004621AE8D200009D721 /* ARESFillStyleCommand.m */; };
+		630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004921AE8D8B0009D721 /* ARESJSBridge.m */; };
+		630F004D21AE8F620009D721 /* ARESJSEnvContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004C21AE8F620009D721 /* ARESJSEnvContext.m */; };
+		630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		630F001B21AE83670009D721 /* ares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ares.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		630F001E21AE83670009D721 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		630F001F21AE83680009D721 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		630F002121AE83680009D721 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		630F002221AE83680009D721 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		630F002521AE83680009D721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		630F002721AE83690009D721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		630F002A21AE83690009D721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		630F002C21AE83690009D721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		630F002D21AE83690009D721 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		630F003621AE83CE0009D721 /* drawCircle.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = drawCircle.js; sourceTree = "<group>"; };
+		630F003821AE856E0009D721 /* ARESView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESView.h; sourceTree = "<group>"; };
+		630F003921AE856E0009D721 /* ARESView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESView.m; sourceTree = "<group>"; };
+		630F003B21AE861C0009D721 /* ARESScript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESScript.h; sourceTree = "<group>"; };
+		630F003C21AE861C0009D721 /* ARESScript.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESScript.m; sourceTree = "<group>"; };
+		630F003E21AE86400009D721 /* ARESHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESHandler.h; sourceTree = "<group>"; };
+		630F003F21AE86400009D721 /* ARESHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESHandler.m; sourceTree = "<group>"; };
+		630F004121AE89450009D721 /* ARESCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESCommand.h; sourceTree = "<group>"; };
+		630F004221AE89450009D721 /* ARESCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESCommand.m; sourceTree = "<group>"; };
+		630F004521AE8D200009D721 /* ARESFillStyleCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESFillStyleCommand.h; sourceTree = "<group>"; };
+		630F004621AE8D200009D721 /* ARESFillStyleCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESFillStyleCommand.m; sourceTree = "<group>"; };
+		630F004821AE8D8B0009D721 /* ARESJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESJSBridge.h; sourceTree = "<group>"; };
+		630F004921AE8D8B0009D721 /* ARESJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESJSBridge.m; sourceTree = "<group>"; };
+		630F004B21AE8F620009D721 /* ARESJSEnvContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESJSEnvContext.h; sourceTree = "<group>"; };
+		630F004C21AE8F620009D721 /* ARESJSEnvContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESJSEnvContext.m; sourceTree = "<group>"; };
+		630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESFillRectCommand.h; sourceTree = "<group>"; };
+		630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESFillRectCommand.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		630F001821AE83670009D721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		630F001221AE83670009D721 = {
+			isa = PBXGroup;
+			children = (
+				630F003521AE83CE0009D721 /* scripts */,
+				630F003421AE83C50009D721 /* sources */,
+				630F001D21AE83670009D721 /* ares */,
+				630F001C21AE83670009D721 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		630F001C21AE83670009D721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				630F001B21AE83670009D721 /* ares.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		630F001D21AE83670009D721 /* ares */ = {
+			isa = PBXGroup;
+			children = (
+				630F001E21AE83670009D721 /* AppDelegate.h */,
+				630F001F21AE83680009D721 /* AppDelegate.m */,
+				630F002121AE83680009D721 /* ViewController.h */,
+				630F002221AE83680009D721 /* ViewController.m */,
+				630F002421AE83680009D721 /* Main.storyboard */,
+				630F002721AE83690009D721 /* Assets.xcassets */,
+				630F002921AE83690009D721 /* LaunchScreen.storyboard */,
+				630F002C21AE83690009D721 /* Info.plist */,
+				630F002D21AE83690009D721 /* main.m */,
+			);
+			path = ares;
+			sourceTree = "<group>";
+		};
+		630F003421AE83C50009D721 /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				630F003821AE856E0009D721 /* ARESView.h */,
+				630F003921AE856E0009D721 /* ARESView.m */,
+				630F004821AE8D8B0009D721 /* ARESJSBridge.h */,
+				630F004921AE8D8B0009D721 /* ARESJSBridge.m */,
+				630F004B21AE8F620009D721 /* ARESJSEnvContext.h */,
+				630F004C21AE8F620009D721 /* ARESJSEnvContext.m */,
+				630F003B21AE861C0009D721 /* ARESScript.h */,
+				630F003C21AE861C0009D721 /* ARESScript.m */,
+				630F003E21AE86400009D721 /* ARESHandler.h */,
+				630F003F21AE86400009D721 /* ARESHandler.m */,
+				630F004121AE89450009D721 /* ARESCommand.h */,
+				630F004221AE89450009D721 /* ARESCommand.m */,
+				630F004421AE8D040009D721 /* commands */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		630F003521AE83CE0009D721 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				630F003621AE83CE0009D721 /* drawCircle.js */,
+			);
+			name = scripts;
+			path = ../examples/scripts;
+			sourceTree = "<group>";
+		};
+		630F004421AE8D040009D721 /* commands */ = {
+			isa = PBXGroup;
+			children = (
+				630F004521AE8D200009D721 /* ARESFillStyleCommand.h */,
+				630F004621AE8D200009D721 /* ARESFillStyleCommand.m */,
+				630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */,
+				630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */,
+			);
+			path = commands;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		630F001A21AE83670009D721 /* ares */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630F003121AE83690009D721 /* Build configuration list for PBXNativeTarget "ares" */;
+			buildPhases = (
+				630F001721AE83670009D721 /* Sources */,
+				630F001821AE83670009D721 /* Frameworks */,
+				630F001921AE83670009D721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ares;
+			productName = ares;
+			productReference = 630F001B21AE83670009D721 /* ares.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		630F001321AE83670009D721 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ARES;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "XT Studio";
+				TargetAttributes = {
+					630F001A21AE83670009D721 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 630F001621AE83670009D721 /* Build configuration list for PBXProject "ares" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 630F001221AE83670009D721;
+			productRefGroup = 630F001C21AE83670009D721 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				630F001A21AE83670009D721 /* ares */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		630F001921AE83670009D721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				630F003721AE83CF0009D721 /* drawCircle.js in Resources */,
+				630F002B21AE83690009D721 /* LaunchScreen.storyboard in Resources */,
+				630F002821AE83690009D721 /* Assets.xcassets in Resources */,
+				630F002621AE83680009D721 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		630F001721AE83670009D721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				630F002321AE83680009D721 /* ViewController.m in Sources */,
+				630F003D21AE861C0009D721 /* ARESScript.m in Sources */,
+				630F002E21AE83690009D721 /* main.m in Sources */,
+				630F004721AE8D200009D721 /* ARESFillStyleCommand.m in Sources */,
+				630F002021AE83680009D721 /* AppDelegate.m in Sources */,
+				630F003A21AE856E0009D721 /* ARESView.m in Sources */,
+				630F004321AE89450009D721 /* ARESCommand.m in Sources */,
+				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
+				630F004021AE86400009D721 /* ARESHandler.m in Sources */,
+				630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */,
+				630F004D21AE8F620009D721 /* ARESJSEnvContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		630F002421AE83680009D721 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				630F002521AE83680009D721 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		630F002921AE83690009D721 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				630F002A21AE83690009D721 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		630F002F21AE83690009D721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		630F003021AE83690009D721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		630F003221AE83690009D721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 544P5CH38C;
+				INFOPLIST_FILE = ares/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xt.ares;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		630F003321AE83690009D721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 544P5CH38C;
+				INFOPLIST_FILE = ares/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xt.ares;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		630F001621AE83670009D721 /* Build configuration list for PBXProject "ares" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630F002F21AE83690009D721 /* Debug */,
+				630F003021AE83690009D721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630F003121AE83690009D721 /* Build configuration list for PBXNativeTarget "ares" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				630F003221AE83690009D721 /* Debug */,
+				630F003321AE83690009D721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 630F001321AE83670009D721 /* Project object */;
+}
