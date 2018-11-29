@@ -95,6 +95,46 @@ var Context = /** @class */ (function () {
     Context.prototype.clearRect = function (x, y, w, h) {
         this.canvasContext.clearRect(x, y, w, h);
     };
+    // Complex shapes (paths)
+    Context.prototype.beginPath = function () {
+        this.canvasContext.beginPath();
+    };
+    Context.prototype.closePath = function () {
+        this.canvasContext.closePath();
+    };
+    Context.prototype.stroke = function () {
+        this.canvasContext.stroke();
+    };
+    Context.prototype.fill = function () {
+        this.canvasContext.fill();
+    };
+    Context.prototype.lineTo = function (x, y) {
+        this.canvasContext.lineTo(x, y);
+    };
+    Context.prototype.moveTo = function (x, y) {
+        this.canvasContext.moveTo(x, y);
+    };
+    Context.prototype.rect = function (x, y, w, h) {
+        this.canvasContext.rect(x, y, w, h);
+    };
+    Context.prototype.quadraticCurveTo = function (cpx, cpy, x, y) {
+        this.canvasContext.quadraticCurveTo(cpx, cpy, x, y);
+    };
+    Context.prototype.bezierCurveTo = function (cp1x, cp1y, cp2x, cp2y, x, y) {
+        this.canvasContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+    };
+    Context.prototype.arc = function (x, y, r, start, end, anticlockwise) {
+        this.canvasContext.arc(x, y, r, start, end, anticlockwise);
+    };
+    Context.prototype.arcTo = function (x1, y1, x2, y2, radius) {
+        this.canvasContext.arcTo(x1, y1, x2, y2, radius);
+    };
+    Context.prototype.clip = function () {
+        this.canvasContext.clip();
+    };
+    Context.prototype.isPointInPath = function (x, y) {
+        return this.canvasContext.isPointInPath(x, y);
+    };
     return Context;
 }());
 exports.Context = Context;

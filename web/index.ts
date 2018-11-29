@@ -88,6 +88,59 @@ export class Context {
         this.canvasContext.clearRect(x, y, w, h)
     }
 
+    // Complex shapes (paths)
+
+    beginPath() {
+        this.canvasContext.beginPath()
+    }
+
+    closePath() {
+        this.canvasContext.closePath()
+    }
+
+    stroke() {
+        this.canvasContext.stroke()
+    }
+
+    fill() {
+        this.canvasContext.fill()
+    }
+
+    lineTo(x: number, y: number) {
+        this.canvasContext.lineTo(x, y)
+    }
+
+    moveTo(x: number, y: number) {
+        this.canvasContext.moveTo(x, y)
+    }
+
+    rect(x: number, y: number, w: number, h: number) {
+        this.canvasContext.rect(x, y, w, h)
+    }
+
+    quadraticCurveTo(cpx: number, cpy: number, x: number, y: number) {
+        this.canvasContext.quadraticCurveTo(cpx, cpy, x, y)
+    }
+
+    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number) {
+        this.canvasContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+    }
+
+    arc(x: number, y: number, r: number, start: number, end: number, anticlockwise: boolean) {
+        this.canvasContext.arc(x, y, r, start, end, anticlockwise)
+    }
+
+    arcTo(x1: number, y1: number, x2: number, y2: number, radius: number) {
+        this.canvasContext.arcTo(x1, y1, x2, y2, radius)
+    }
+
+    clip() {
+        this.canvasContext.clip()
+    }
+
+    isPointInPath(x: number, y: number): boolean {
+        return this.canvasContext.isPointInPath(x, y)
+    }
 
 }
 
