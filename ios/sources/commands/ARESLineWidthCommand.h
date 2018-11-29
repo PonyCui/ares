@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESLineWidthCommand : ARESCommand
 
-@property (nonatomic, readonly) CGFloat lineWidth;
+@property (nonatomic, assign) CGFloat lineWidth;
+
+- (instancetype)initWithLineWidth:(CGFloat)lineWidth;
 
 @end
 

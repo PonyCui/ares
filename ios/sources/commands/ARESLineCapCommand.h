@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESLineCapCommand : ARESCommand
 
+@property (nonatomic, strong) NSString *value;
+
+- (instancetype)initWithValue:(NSString *)value;
+
 @end
 
 NS_ASSUME_NONNULL_END

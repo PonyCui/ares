@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sampleView = [[ARESView alloc] initWithFrame:CGRectZero];
-    self.sampleView.backgroundColor = [UIColor blackColor];
+    self.sampleView.backgroundColor = [UIColor grayColor];
     ARESScript *script = [ARESScript decodeFromBundle:@"drawCircle.js" bundle:nil];
     if (script != nil) {
         ARESHandler *handler = [self.sampleView exec:script];

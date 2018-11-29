@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESFillStyleCommand : ARESCommand
 
-@property (nonatomic, readonly) UIColor *color;
+@property (nonatomic, strong) UIColor *color;
+
+- (instancetype)initWithValue:(NSString *)value;
 
 @end
 

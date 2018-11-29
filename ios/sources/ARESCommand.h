@@ -12,12 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESCommand : NSObject
 
-@property (nonatomic, readonly, nonnull) NSString *method;
-@property (nonatomic, readonly, nullable) NSArray *arguments;
-
-- (instancetype)initWithMethod:(NSString *)method
-                     arguments:(NSArray *)arguments;
-
 - (void)draw:(CGContextRef)ctx;
 
 @end

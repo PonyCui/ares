@@ -8,20 +8,13 @@
 
 #import "ARESFillStyleCommand.h"
 
-@interface ARESFillStyleCommand ()
-
-@property (nonatomic, readwrite) UIColor *color;
-
-@end
-
 @implementation ARESFillStyleCommand
 
-- (instancetype)initWithMethod:(NSString *)method arguments:(NSArray *)arguments {
-    self = [super initWithMethod:method arguments:arguments];
+- (instancetype)initWithValue:(NSString *)value
+{
+    self = [super init];
     if (self) {
-        if (arguments.count == 1 && [arguments[0] isKindOfClass:[NSString class]]) {
-            [self parseStaticColor:arguments[0]];
-        }
+        [self parseStaticColor:value];
     }
     return self;
 }
@@ -36,7 +29,7 @@
 }
 
 - (void)draw:(CGContextRef)ctx {
-    [self.color setFill];
+    CGContextSetFillColorWithColor(ctx, self.color.CGColor);
 }
 
 @end

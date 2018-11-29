@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESMiterLimitCommand : ARESCommand
 
+@property (nonatomic, assign) CGFloat value;
+
+- (instancetype)initWithValue:(CGFloat)value;
+
 @end
 
 NS_ASSUME_NONNULL_END

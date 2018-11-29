@@ -10,4 +10,25 @@
 
 @implementation ARESLineJoinCommand
 
+- (instancetype)initWithValue:(NSString *)value
+{
+    self = [super init];
+    if (self) {
+        _value = value;
+    }
+    return self;
+}
+
+- (void)draw:(CGContextRef)ctx {
+    if ([self.value isEqualToString:@"bevel"]) {
+        CGContextSetLineJoin(ctx, kCGLineJoinBevel);
+    }
+    else if ([self.value isEqualToString:@"miter"]) {
+        CGContextSetLineJoin(ctx, kCGLineJoinMiter);
+    }
+    else if ([self.value isEqualToString:@"round"]) {
+        CGContextSetLineJoin(ctx, kCGLineJoinRound);
+    }
+}
+
 @end

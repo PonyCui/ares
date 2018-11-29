@@ -22,6 +22,11 @@
 		630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004921AE8D8B0009D721 /* ARESJSBridge.m */; };
 		630F004D21AE8F620009D721 /* ARESJSEnvContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004C21AE8F620009D721 /* ARESJSEnvContext.m */; };
 		630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */; };
+		6312650621AFD124000AA19A /* ARESGlobalAlphaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312650521AFD124000AA19A /* ARESGlobalAlphaCommand.m */; };
+		6312650921AFD2CD000AA19A /* ARESClearRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312650821AFD2CD000AA19A /* ARESClearRectCommand.m */; };
+		6312650C21AFD427000AA19A /* ARESLineCapCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312650B21AFD427000AA19A /* ARESLineCapCommand.m */; };
+		6312650F21AFD457000AA19A /* ARESLineJoinCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312650E21AFD457000AA19A /* ARESLineJoinCommand.m */; };
+		6312651221AFD464000AA19A /* ARESMiterLimitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312651121AFD464000AA19A /* ARESMiterLimitCommand.m */; };
 		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
@@ -55,6 +60,16 @@
 		630F004C21AE8F620009D721 /* ARESJSEnvContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESJSEnvContext.m; sourceTree = "<group>"; };
 		630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESFillRectCommand.h; sourceTree = "<group>"; };
 		630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESFillRectCommand.m; sourceTree = "<group>"; };
+		6312650421AFD124000AA19A /* ARESGlobalAlphaCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESGlobalAlphaCommand.h; sourceTree = "<group>"; };
+		6312650521AFD124000AA19A /* ARESGlobalAlphaCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESGlobalAlphaCommand.m; sourceTree = "<group>"; };
+		6312650721AFD2CD000AA19A /* ARESClearRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESClearRectCommand.h; sourceTree = "<group>"; };
+		6312650821AFD2CD000AA19A /* ARESClearRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESClearRectCommand.m; sourceTree = "<group>"; };
+		6312650A21AFD427000AA19A /* ARESLineCapCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESLineCapCommand.h; sourceTree = "<group>"; };
+		6312650B21AFD427000AA19A /* ARESLineCapCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineCapCommand.m; sourceTree = "<group>"; };
+		6312650D21AFD457000AA19A /* ARESLineJoinCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESLineJoinCommand.h; sourceTree = "<group>"; };
+		6312650E21AFD457000AA19A /* ARESLineJoinCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineJoinCommand.m; sourceTree = "<group>"; };
+		6312651021AFD464000AA19A /* ARESMiterLimitCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESMiterLimitCommand.h; sourceTree = "<group>"; };
+		6312651121AFD464000AA19A /* ARESMiterLimitCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESMiterLimitCommand.m; sourceTree = "<group>"; };
 		6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeStyleCommand.h; sourceTree = "<group>"; };
 		6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeStyleCommand.m; sourceTree = "<group>"; };
 		6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESLineWidthCommand.h; sourceTree = "<group>"; };
@@ -140,16 +155,26 @@
 		630F004421AE8D040009D721 /* commands */ = {
 			isa = PBXGroup;
 			children = (
+				6312650421AFD124000AA19A /* ARESGlobalAlphaCommand.h */,
+				6312650521AFD124000AA19A /* ARESGlobalAlphaCommand.m */,
 				630F004521AE8D200009D721 /* ARESFillStyleCommand.h */,
 				630F004621AE8D200009D721 /* ARESFillStyleCommand.m */,
 				6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */,
 				6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */,
+				6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */,
+				6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */,
+				6312650A21AFD427000AA19A /* ARESLineCapCommand.h */,
+				6312650B21AFD427000AA19A /* ARESLineCapCommand.m */,
+				6312650D21AFD457000AA19A /* ARESLineJoinCommand.h */,
+				6312650E21AFD457000AA19A /* ARESLineJoinCommand.m */,
+				6312651021AFD464000AA19A /* ARESMiterLimitCommand.h */,
+				6312651121AFD464000AA19A /* ARESMiterLimitCommand.m */,
 				630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */,
 				630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */,
 				6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */,
 				6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */,
-				6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */,
-				6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */,
+				6312650721AFD2CD000AA19A /* ARESClearRectCommand.h */,
+				6312650821AFD2CD000AA19A /* ARESClearRectCommand.m */,
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -226,10 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6312650921AFD2CD000AA19A /* ARESClearRectCommand.m in Sources */,
 				630F002321AE83680009D721 /* ViewController.m in Sources */,
 				630F003D21AE861C0009D721 /* ARESScript.m in Sources */,
 				6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */,
 				630F002E21AE83690009D721 /* main.m in Sources */,
+				6312650C21AFD427000AA19A /* ARESLineCapCommand.m in Sources */,
+				6312650F21AFD457000AA19A /* ARESLineJoinCommand.m in Sources */,
 				630F004721AE8D200009D721 /* ARESFillStyleCommand.m in Sources */,
 				630F002021AE83680009D721 /* AppDelegate.m in Sources */,
 				630F003A21AE856E0009D721 /* ARESView.m in Sources */,
@@ -237,9 +265,11 @@
 				6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */,
 				6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */,
 				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
+				6312650621AFD124000AA19A /* ARESGlobalAlphaCommand.m in Sources */,
 				630F004021AE86400009D721 /* ARESHandler.m in Sources */,
 				630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */,
 				630F004D21AE8F620009D721 /* ARESJSEnvContext.m in Sources */,
+				6312651221AFD464000AA19A /* ARESMiterLimitCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

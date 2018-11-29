@@ -10,24 +10,11 @@
 
 @interface ARESCommand ()
 
-@property (nonatomic, readwrite) NSString *method;
-@property (nonatomic, readwrite) NSArray *arguments;
-
 @end
 
 @implementation ARESCommand
 
-- (instancetype)initWithMethod:(NSString *)method arguments:(NSArray *)arguments
-{
-    self = [super init];
-    if (self) {
-        _method = method;
-        _arguments = arguments;
-    }
-    return self;
-}
-
-- (void)draw:(CGContextRef *)ctx {
+- (void)draw:(CGContextRef)ctx {
     
 }
 

@@ -10,4 +10,17 @@
 
 @implementation ARESGlobalAlphaCommand
 
+- (instancetype)initWithValue:(CGFloat)value
+{
+    self = [super init];
+    if (self) {
+        _value = value;
+    }
+    return self;
+}
+
+- (void)draw:(CGContextRef)ctx {
+    CGContextSetAlpha(ctx, self.value);
+}
+
 @end

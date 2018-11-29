@@ -8,20 +8,12 @@
 
 #import "ARESLineWidthCommand.h"
 
-@interface ARESLineWidthCommand ()
-
-@property (nonatomic, readwrite) CGFloat lineWidth;
-
-@end
-
 @implementation ARESLineWidthCommand
 
-- (instancetype)initWithMethod:(NSString *)method arguments:(NSArray *)arguments {
-    self = [super initWithMethod:method arguments:arguments];
+- (instancetype)initWithLineWidth:(CGFloat)lineWidth {
+    self = [super init];
     if (self) {
-        if (arguments.count == 1 && [arguments[0] isKindOfClass:[NSNumber class]]) {
-            _lineWidth = [arguments[0] floatValue];
-        }
+        _lineWidth = lineWidth;
     }
     return self;
 }

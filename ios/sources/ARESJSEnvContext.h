@@ -15,9 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)create;
 
+@property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *fillStyle;
+@property (nonatomic, strong) NSString *strokeStyle;
+@property (nonatomic, assign) float lineWidth;
+@property (nonatomic, strong) NSString *lineCap;
+@property (nonatomic, strong) NSString *lineJoin;
+@property (nonatomic, assign) float miterLimit;
 
 JSExportAs(fillRect, -(void)fillRect:(float)x y:(float)y w:(float)w h:(float)h);
+JSExportAs(strokeRect, - (void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h);
+JSExportAs(clearRect, - (void)clearRect:(float)x y:(float)y w:(float)w h:(float)h);
 
 @end
 
@@ -25,9 +33,17 @@ JSExportAs(fillRect, -(void)fillRect:(float)x y:(float)y w:(float)w h:(float)h);
 
 + (instancetype)create;
 
+@property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *fillStyle;
+@property (nonatomic, strong) NSString *strokeStyle;
+@property (nonatomic, assign) float lineWidth;
+@property (nonatomic, strong) NSString *lineCap;
+@property (nonatomic, strong) NSString *lineJoin;
+@property (nonatomic, assign) float miterLimit;
 
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h;
+- (void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h;
+- (void)clearRect:(float)x y:(float)y w:(float)w h:(float)h;
 
 @end
 

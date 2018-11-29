@@ -124,12 +124,10 @@
 
 - (void)drawCommands {
     if (self.cgContext != NULL) {
-        UIGraphicsPushContext(self.cgContext);
         for (ARESCommand *command in self.commands) {
             [command draw:self.cgContext];
         }
         [self.commands removeAllObjects];
-        UIGraphicsPopContext();
     }
 }
 

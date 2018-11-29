@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARESClearRectCommand : ARESCommand
 
+- (instancetype)initWithX:(float)x y:(float)y w:(float)w h:(float)h;
+
 @end
 
 NS_ASSUME_NONNULL_END
