@@ -16,7 +16,7 @@ class ARESView : View {
     internal val jsScope: ScriptableObject
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
-    internal val currentPaint = Paint()
+    internal val currentPaint = ARESPaint()
     private var osCanvas: Canvas? = null
     private var osBitmap: Bitmap? = null
 

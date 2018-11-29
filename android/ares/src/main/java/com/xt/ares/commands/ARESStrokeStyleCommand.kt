@@ -6,7 +6,7 @@ import android.graphics.Paint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
 
-class ARESFillStyleCommand(value: String): ARESCommand() {
+class ARESStrokeStyleCommand(value: String): ARESCommand() {
 
     var color: Int = 0
         private set
@@ -25,7 +25,7 @@ class ARESFillStyleCommand(value: String): ARESCommand() {
 
     override fun draw(view: ARESView, canvas: Canvas) {
         super.draw(view, canvas)
-        view.currentPaint.fillColor = this.color
+        view.currentPaint.strokeColor = this.color
     }
 
 }

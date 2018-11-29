@@ -5,12 +5,12 @@ import android.graphics.Paint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
 
-class ARESFillRectCommand(val x: Double, val y: Double, val w: Double, val h: Double): ARESCommand() {
+class ARESStrokeRectCommand(val x: Double, val y: Double, val w: Double, val h: Double): ARESCommand() {
 
     override fun draw(view: ARESView, canvas: Canvas) {
         super.draw(view, canvas)
-        view.currentPaint.color = view.currentPaint.fillColor
-        view.currentPaint.style = Paint.Style.FILL
+        view.currentPaint.color = view.currentPaint.strokeColor
+        view.currentPaint.style = Paint.Style.STROKE
         canvas.drawRect(x.toFloat(), y.toFloat(), x.toFloat() + w.toFloat(), y.toFloat() + h.toFloat(), view.currentPaint)
     }
 
