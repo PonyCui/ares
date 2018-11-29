@@ -10,7 +10,7 @@ The ares repository is where Ares is developed and there are many ways you can p
 
 ## Contributing
 
-If you are interested in fixing issues and contributing directly to the code base, please see the document How to Contribute and our [Code of Conduct](./CODE_OF_CONDUCT.md)., which covers the following:
+If you are interested in fixing issues and contributing directly to the code base, please see the document How to Contribute and our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ### Web Developer
 
