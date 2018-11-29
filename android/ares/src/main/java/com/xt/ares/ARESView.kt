@@ -1,6 +1,7 @@
 package com.xt.ares
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
@@ -16,6 +17,8 @@ class ARESView : View {
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
     internal val currentPaint = Paint()
+    private var osCanvas: Canvas? = null
+    private var osBitmap: Bitmap? = null
 
     @JvmOverloads
     constructor(context:Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0): super(context, attributeSet, defStyleAttr) { }
@@ -24,6 +27,7 @@ class ARESView : View {
         this.jsContext.optimizationLevel = -1
         this.jsScope = this.jsContext.initStandardObjects()
         this.bridge.setupContext()
+        this.resetCanvas()
     }
 
     fun exec(script: ARESScript): ARESHandler? {
@@ -39,18 +43,61 @@ class ARESView : View {
         return null
     }
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        if (changed) {
+            this.resetCanvas()
+        }
+    }
+
+    private fun resetCanvas() {
+        if (this.width <= 0 || this.height <= 0) {
+            this.releaseCanvas()
+            return
+        }
+        this.osBitmap?.takeIf { it.width == this.width && it.height == this.height }?.let {
+            return
+        }
+        val oldImage = this.osBitmap
+        this.osBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888)
+        this.osCanvas = Canvas(this.osBitmap)
+        oldImage?.let {
+            this.osCanvas?.drawBitmap(it, 0.0f, 0.0f, null)
+        }
+        this.osCanvas?.scale(this.resources.displayMetrics.density, this.resources.displayMetrics.density)
+        this.update()
+    }
+
+    private fun releaseCanvas() {
+        this.osCanvas = null
+        this.osBitmap?.recycle()
+        this.osBitmap = null
+    }
+
     fun addCommand(command: ARESCommand) {
         this.commands.add(command)
+    }
+
+    fun drawCommands() {
+        this.osCanvas?.let { osCanvas ->
+            this.commands.forEach {
+                it.draw(this, osCanvas)
+            }
+            this.commands.clear()
+        }
+    }
+
+    fun update() {
+        this.drawCommands()
         this.invalidate()
     }
 
     override fun draw(canvas: Canvas?) {
         super.draw(canvas)
         canvas?.let { canvas ->
-            canvas.save()
-            canvas.scale(this.resources.displayMetrics.density, this.resources.displayMetrics.density)
-            this.commands.forEach { it.draw(this, canvas) }
-            canvas.restore()
+            this.osBitmap?.let { osBitmap ->
+                canvas.drawBitmap(osBitmap, 0f, 0f, null)
+            }
         }
     }
 

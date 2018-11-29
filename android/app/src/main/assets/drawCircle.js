@@ -11,7 +11,7 @@ main = function (ctx) {
     return {
         fillColor: function (color) {
             ctx.fillStyle = color
-            ctx.fillRect(44, 44, 44, 44)
+            ctx.fillRect(88, 88, 44, 44)
         }
     }
 
