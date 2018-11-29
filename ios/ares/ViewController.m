@@ -36,5 +36,4 @@
     self.sampleView.frame = self.view.bounds;
 }
 
-
 @end

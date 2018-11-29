@@ -17,10 +17,15 @@
 @property (nonatomic, strong) JSContext *context;
 @property (nonatomic, strong) ARESJSBridge *bridge;
 @property (nonatomic, strong) NSMutableArray<ARESCommand *> *commands;
+@property (nonatomic, assign) CGContextRef cgContext;
 
 @end
 
 @implementation ARESView
+
+- (void)dealloc {
+    [self releaseCGContext];
+}
 
 - (instancetype)init
 {
@@ -53,6 +58,7 @@
     self.bridge = [[ARESJSBridge alloc] initWithContext:self.context];
     self.bridge.view = self;
     self.commands = [NSMutableArray array];
+    [self resetCGContext];
 }
 
 - (ARESHandler *)exec:(ARESScript *)script {
@@ -63,20 +69,74 @@
                       callWithArguments:@[
                                           [[ARESJSEnvContext alloc] init]
                                           ]];
+    [self update];
     handler.managedValue = [JSManagedValue managedValueWithValue:value];
+    handler.view = self;
     return handler;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self resetCGContext];
+}
+
+- (void)resetCGContext {
+    if (self.bounds.size.width == 0 || self.bounds.size.height == 0) {
+        [self releaseCGContext];
+        return;
+    }
+    CGContextRef oldContext = self.cgContext;
+    if (oldContext != NULL &&
+        CGBitmapContextGetWidth(oldContext) == self.bounds.size.width &&
+        CGBitmapContextGetHeight(oldContext) == self.bounds.size.height) {
+        return;
+    }
+    CGImageRef oldImage = oldContext != NULL ? CGBitmapContextCreateImage(oldContext) : NULL;
+    self.cgContext = CGBitmapContextCreate(NULL,
+                                           self.bounds.size.width,
+                                           self.bounds.size.height,
+                                           8,
+                                           self.bounds.size.width * 4,
+                                           CGColorSpaceCreateDeviceRGB(),
+                                           kCGImageAlphaPremultipliedLast);
+    if (oldImage != NULL) {
+        CGContextDrawImage(self.cgContext,
+                           CGRectMake(0, 0, CGImageGetWidth(oldImage), CGImageGetHeight(oldImage)),
+                           oldImage);
+        CGImageRelease(oldImage);
+    }
+    if (oldContext != NULL) {
+        CGContextRelease(oldContext);
+    }
+    [self update];
+}
+
+- (void)releaseCGContext {
+    if (self.cgContext != NULL) {
+        CGContextRelease(self.cgContext);
+        self.cgContext = NULL;
+    }
 }
 
 - (void)addCommand:(ARESCommand *)command {
     [self.commands addObject:command];
-    [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    for (ARESCommand *command in self.commands) {
-        [command draw];
+- (void)drawCommands {
+    if (self.cgContext != NULL) {
+        UIGraphicsPushContext(self.cgContext);
+        for (ARESCommand *command in self.commands) {
+            [command draw:self.cgContext];
+        }
+        [self.commands removeAllObjects];
+        UIGraphicsPopContext();
     }
+}
+
+- (void)update {
+    [self drawCommands];
+    self.layer.contents = CFBridgingRelease(CGBitmapContextCreateImage(self.cgContext));
+    self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
 }
 
 @end

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nonnull ARESHandler *)exec:(nonnull ARESScript *)script;
 - (void)addCommand:(ARESCommand *)command;
+- (void)update;
 
 @end
 

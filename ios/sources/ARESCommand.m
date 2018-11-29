@@ -27,6 +27,8 @@
     return self;
 }
 
-- (void)draw {}
+- (void)draw:(CGContextRef *)ctx {
+    
+}
 
 @end

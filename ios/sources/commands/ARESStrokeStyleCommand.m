@@ -1,20 +1,20 @@
 //
-//  ARESFillStyleCommand.m
+//  ARESStrokeStyleCommand.m
 //  ares
 //
-//  Created by PonyCui on 2018/11/28.
+//  Created by PonyCui on 2018/11/29.
 //  Copyright © 2018年 XT Studio. All rights reserved.
 //
 
-#import "ARESFillStyleCommand.h"
+#import "ARESStrokeStyleCommand.h"
 
-@interface ARESFillStyleCommand ()
+@interface ARESStrokeStyleCommand ()
 
 @property (nonatomic, readwrite) UIColor *color;
 
 @end
 
-@implementation ARESFillStyleCommand
+@implementation ARESStrokeStyleCommand
 
 - (instancetype)initWithMethod:(NSString *)method arguments:(NSArray *)arguments {
     self = [super initWithMethod:method arguments:arguments];
@@ -36,7 +36,7 @@
 }
 
 - (void)draw:(CGContextRef)ctx {
-    [self.color setFill];
+    [self.color setStroke];
 }
 
 @end

@@ -22,6 +22,9 @@
 		630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004921AE8D8B0009D721 /* ARESJSBridge.m */; };
 		630F004D21AE8F620009D721 /* ARESJSEnvContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004C21AE8F620009D721 /* ARESJSEnvContext.m */; };
 		630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */; };
+		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
+		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
+		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,12 @@
 		630F004C21AE8F620009D721 /* ARESJSEnvContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESJSEnvContext.m; sourceTree = "<group>"; };
 		630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESFillRectCommand.h; sourceTree = "<group>"; };
 		630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESFillRectCommand.m; sourceTree = "<group>"; };
+		6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeStyleCommand.h; sourceTree = "<group>"; };
+		6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeStyleCommand.m; sourceTree = "<group>"; };
+		6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESLineWidthCommand.h; sourceTree = "<group>"; };
+		6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineWidthCommand.m; sourceTree = "<group>"; };
+		6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeRectCommand.h; sourceTree = "<group>"; };
+		6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeRectCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +142,14 @@
 			children = (
 				630F004521AE8D200009D721 /* ARESFillStyleCommand.h */,
 				630F004621AE8D200009D721 /* ARESFillStyleCommand.m */,
+				6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */,
+				6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */,
 				630F004E21AE94DA0009D721 /* ARESFillRectCommand.h */,
 				630F004F21AE94DA0009D721 /* ARESFillRectCommand.m */,
+				6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */,
+				6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */,
+				6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */,
+				6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */,
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -213,11 +228,14 @@
 			files = (
 				630F002321AE83680009D721 /* ViewController.m in Sources */,
 				630F003D21AE861C0009D721 /* ARESScript.m in Sources */,
+				6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */,
 				630F002E21AE83690009D721 /* main.m in Sources */,
 				630F004721AE8D200009D721 /* ARESFillStyleCommand.m in Sources */,
 				630F002021AE83680009D721 /* AppDelegate.m in Sources */,
 				630F003A21AE856E0009D721 /* ARESView.m in Sources */,
 				630F004321AE89450009D721 /* ARESCommand.m in Sources */,
+				6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */,
+				6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */,
 				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
 				630F004021AE86400009D721 /* ARESHandler.m in Sources */,
 				630F004A21AE8D8B0009D721 /* ARESJSBridge.m in Sources */,

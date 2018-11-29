@@ -22,6 +22,7 @@
     _fillStyle = fillStyle;
     ARESView *view = [ARESJSBridge viewWithContext:[JSContext currentContext]];
     if (view != nil) {
+        
         [view addCommand:[[ARESFillStyleCommand alloc] initWithMethod:@"fillStyle"
                                                             arguments:@[fillStyle ?: @""]]];
     }

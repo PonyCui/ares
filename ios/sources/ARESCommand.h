@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithMethod:(NSString *)method
                      arguments:(NSArray *)arguments;
 
-- (void)draw;
+- (void)draw:(CGContextRef)ctx;
 
 @end
 

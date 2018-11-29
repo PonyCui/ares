@@ -7,6 +7,7 @@
 //
 
 #import "ARESHandler.h"
+#import "ARESView.h"
 
 @implementation ARESHandler
 
@@ -14,6 +15,9 @@
     JSValue *value = self.managedValue.value;
     if (value != nil) {
         [value invokeMethod:method withArguments:arguments];
+        if (self.view != nil) {
+            [self.view update];
+        }
     }
 }
 

@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void)draw {
+- (void)draw:(CGContextRef)ctx {
     [self.bezierPath fill];
 }
 

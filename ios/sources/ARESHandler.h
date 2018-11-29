@@ -11,9 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ARESView;
+
 @interface ARESHandler : NSObject
 
 @property (nonatomic, strong) JSManagedValue *managedValue;
+@property (nonatomic, weak) ARESView *view;
 
 - (void)invokeMethod:(NSString *)method
            arguments:(nullable NSArray *)arguments;
