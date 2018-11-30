@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
 import org.mozilla.javascript.Function
@@ -17,6 +18,7 @@ class ARESView : View {
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
     internal val currentPaint = ARESPaint()
+    internal val currentPath = ARESPath()
     private var osCanvas: Canvas? = null
     private var osBitmap: Bitmap? = null
 
