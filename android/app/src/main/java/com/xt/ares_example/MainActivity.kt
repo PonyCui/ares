@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view = ARESView(this)
-        view.setBackgroundColor(Color.BLACK)
+        view.setBackgroundColor(Color.GRAY)
         ARESScript.decodeFromAssets(this, "drawCircle.js")?.let {
             view.exec(it)?.let {
                 view.postDelayed({

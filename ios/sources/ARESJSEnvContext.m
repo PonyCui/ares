@@ -9,6 +9,13 @@
 #import "ARESJSEnvContext.h"
 #import "ARESJSBridge.h"
 #import "ARESView.h"
+#import "ARESSaveCommand.h"
+#import "ARESRestoreCommand.h"
+#import "ARESScaleCommand.h"
+#import "ARESRotateCommand.h"
+#import "ARESTranslateCommand.h"
+#import "ARESTransformCommand.h"
+#import "ARESSetTransformCommand.h"
 #import "ARESGlobalAlphaCommand.h"
 #import "ARESFillStyleCommand.h"
 #import "ARESStrokeStyleCommand.h"
@@ -33,6 +40,34 @@
 #import "ARESClipCommand.h"
 
 @implementation ARESJSEnvContext
+
+- (void)save {
+    [self addCommandToView:[[ARESSaveCommand alloc] init]];
+}
+
+- (void)restore {
+    [self addCommandToView:[[ARESRestoreCommand alloc] init]];
+}
+
+- (void)scale:(float)x y:(float)y {
+    [self addCommandToView:[[ARESScaleCommand alloc] initWithSx:x sy:y]];
+}
+
+- (void)rotate:(float)angle {
+    [self addCommandToView:[[ARESRotateCommand alloc] initWithAngle:angle]];
+}
+
+- (void)translate:(float)x y:(float)y {
+    [self addCommandToView:[[ARESTranslateCommand alloc] initWithTx:x ty:y]];
+}
+
+- (void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty {
+    [self addCommandToView:[[ARESTransformCommand alloc] initWithA:a b:b c:c d:d tx:tx ty:ty]];
+}
+
+- (void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty {
+    [self addCommandToView:[[ARESSetTransformCommand alloc] initWithA:a b:b c:c d:d tx:tx ty:ty]];
+}
 
 - (void)setGlobalAlpha:(float)globalAlpha {
     _globalAlpha = globalAlpha;

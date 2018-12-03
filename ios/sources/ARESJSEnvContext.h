@@ -21,6 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
 
+- (void)save;
+- (void)restore;
+JSExportAs(scale, -(void)scale:(float)x y:(float)y);
+- (void)rotate:(float)angle;
+JSExportAs(translate, -(void)translate:(float)x y:(float)y);
+JSExportAs(transform, -(void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
+JSExportAs(setTransform, -(void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
 JSExportAs(fillRect, -(void)fillRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(strokeRect, -(void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(clearRect, -(void)clearRect:(float)x y:(float)y w:(float)w h:(float)h);
@@ -42,8 +49,6 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 
 @interface ARESJSEnvContext : NSObject <ARESJSEnvContextExport>
 
-+ (instancetype)create;
-
 @property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
@@ -52,6 +57,13 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
 
+- (void)save;
+- (void)restore;
+- (void)scale:(float)x y:(float)y;
+- (void)rotate:(float)angle;
+- (void)translate:(float)x y:(float)y;
+- (void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
+- (void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)clearRect:(float)x y:(float)y w:(float)w h:(float)h;

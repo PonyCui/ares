@@ -1,10 +1,7 @@
 package com.xt.ares
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import org.mozilla.javascript.Function
@@ -17,8 +14,9 @@ class ARESView : View {
     internal val jsScope: ScriptableObject
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
-    internal val currentPaint = ARESPaint()
+    internal var currentPaint = ARESPaint()
     internal val currentPath = ARESPath()
+    internal val savedPaints: MutableList<ARESPaint> = mutableListOf()
     private var osCanvas: Canvas? = null
     private var osBitmap: Bitmap? = null
 
@@ -70,6 +68,11 @@ class ARESView : View {
         this.update()
     }
 
+    fun resetCanvasTransform() {
+        this.osCanvas?.matrix = Matrix()
+        this.osCanvas?.scale(this.resources.displayMetrics.density, this.resources.displayMetrics.density)
+    }
+
     private fun releaseCanvas() {
         this.osCanvas = null
         this.osBitmap?.recycle()
@@ -86,6 +89,20 @@ class ARESView : View {
                 it.draw(this, osCanvas)
             }
             this.commands.clear()
+        }
+    }
+
+    fun save(canvas: Canvas) {
+        canvas.save()
+        this.savedPaints.add(this.currentPaint)
+        this.currentPaint = this.currentPaint.clone()
+    }
+
+    fun restore(canvas: Canvas) {
+        canvas.restore()
+        if (this.savedPaints.count() > 0) {
+            this.currentPaint = this.savedPaints.last()
+            this.savedPaints.removeAt(this.savedPaints.count() - 1)
         }
     }
 

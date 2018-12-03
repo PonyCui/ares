@@ -3,29 +3,22 @@
  * @param {*} ctx 
  */
 
-main = function (context) {
+main = function (ctx) {
 
-    // add a new path
-    // context.beginPath();
-    // context.moveTo (75,130);                // make (75,130) the current point
-    // context.lineTo (145,75);                // line from (75,130) to (145,75)
-    // context.arc (75,75,70,0,Math.PI,true);  // draw half circle disk with center (75,75), radius 70 and counterclockwise
-    // context.lineTo (75,130);                // line from (5,70) to (75,130)
-    context.lineWidth = 3.0;                // set the line width for the stroke drawing
-    context.strokeStyle = 'red';         // set the line color for the stroke drawing
-    context.beginPath();
-    context.moveTo(60, 120);
-    context.lineTo(150, 30)
-    context.lineTo(240, 120)
-    context.stroke();
-    context.beginPath();
-    context.moveTo(150, 30);
-    context.lineTo(150, 30 + 50 + 120)
-    context.stroke();
-    context.beginPath();
-    context.moveTo(60, 120);
-    context.arcTo(150, 30, 240, 120, 120);  // different values for radius 
-    context.stroke();
+    var sin = Math.sin(Math.PI/6);
+      var cos = Math.cos(Math.PI/6);
+      ctx.translate(100, 100);
+      var c = 0;
+      for (var i=0; i <= 12; i++) {
+        c = Math.floor(255 / 12 * i);
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 0, 100, 10);
+        ctx.transform(cos, sin, -sin, cos, 0, 0);
+      }
+
+      ctx.setTransform(-1, 0, 0, 1, 100, 100);
+      ctx.fillStyle = "red";
+      ctx.fillRect(0, 50, 100, 100);
 
     // return {
     //     fillColor: function (color) {

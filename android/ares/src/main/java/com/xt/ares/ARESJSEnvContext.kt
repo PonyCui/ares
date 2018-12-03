@@ -55,6 +55,13 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 ARESJSEnvContext::class.java.getDeclaredMethod("setMiterLimit", Double::class.java),
                 0)
         this.defineFunctionProperties(arrayOf(
+                "save",
+                "restore",
+                "scale",
+                "rotate",
+                "translate",
+                "transform",
+                "setTransform",
                 "fillRect",
                 "strokeRect",
                 "clearRect",
@@ -72,11 +79,38 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "clip",
                 "isPointInPath"
                 ), ARESJSEnvContext::class.java, 0)
-        print(true)
     }
 
     override fun getClassName(): String {
         return "Context"
+    }
+
+    fun save() {
+        this.view.addCommand(ARESSaveCommand())
+    }
+
+    fun restore() {
+        this.view.addCommand(ARESRestoreCommand())
+    }
+
+    fun scale(x: Double, y: Double) {
+        this.view.addCommand(ARESScaleCommand(x, y))
+    }
+
+    fun rotate(angle: Double) {
+        this.view.addCommand(ARESRotateCommand(angle))
+    }
+
+    fun translate(x: Double, y: Double) {
+        this.view.addCommand(ARESTranslateCommand(x, y))
+    }
+
+    fun transform(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
+        this.view.addCommand(ARESTransformCommand(a, b, c, d, tx, ty))
+    }
+
+    fun setTransform(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
+        this.view.addCommand(ARESSetTransformCommand(a, b, c, d, tx, ty))
     }
 
     var globalAlpha: Double = 1.0
