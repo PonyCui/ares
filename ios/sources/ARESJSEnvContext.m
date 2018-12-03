@@ -38,8 +38,23 @@
 #import "ARESArcCommand.h"
 #import "ARESArcToCommand.h"
 #import "ARESClipCommand.h"
+#import "ARESFontCommand.h"
+#import "ARESTextAlignCommand.h"
+#import "ARESTextBaselineCommand.h"
+#import "ARESFillTextCommand.h"
+#import "ARESStrokeTextCommand.h"
+#import "ARESMeasureTextCommand.h"
 
 @implementation ARESJSEnvContext
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _font = @"10px sans-serif";
+    }
+    return self;
+}
 
 - (void)save {
     [self addCommandToView:[[ARESSaveCommand alloc] init]];
@@ -188,6 +203,39 @@
 
 - (BOOL)isPointInPath:(float)x y:(float)y {
     return [[ARESBeginPathCommand currentPath] containsPoint:CGPointMake(x, y)];
+}
+
+- (void)setFont:(NSString *)font {
+    _font = font;
+    [self addCommandToView:[[ARESFontCommand alloc] initWithValue:font]];
+}
+
+- (void)setTextAlign:(NSString *)textAlign {
+    _textAlign = textAlign;
+    [self addCommandToView:[[ARESTextAlignCommand alloc] initWithValue:textAlign]];
+}
+
+- (void)setTextBaseline:(NSString *)textBaseline {
+    _textBaseline = textBaseline;
+    [self addCommandToView:[[ARESTextBaselineCommand alloc] initWithValue:textBaseline]];
+}
+
+- (void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth {
+    [self addCommandToView:[[ARESFillTextCommand alloc] initWithText:text
+                                                                   x:x
+                                                                   y:y
+                                                            maxWidth:maxWidth]];
+}
+
+- (void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth {
+    [self addCommandToView:[[ARESStrokeTextCommand alloc] initWithText:text
+                                                                     x:x
+                                                                     y:y
+                                                              maxWidth:maxWidth]];
+}
+
+- (NSDictionary *)measureText:(NSString *)text {
+    return [ARESMeasureTextCommand measureText:text];
 }
 
 - (void)addCommandToView:(ARESCommand *)command {

@@ -7,11 +7,12 @@
 //
 
 #import "ARESRestoreCommand.h"
+#import "ARESView.h"
 
 @implementation ARESRestoreCommand
 
-- (void)draw:(CGContextRef)ctx {
-    CGContextRestoreGState(ctx);
+- (void)draw:(CGContextRef)ctx view:(ARESView *)view {
+    [view restore];
 }
 
 @end

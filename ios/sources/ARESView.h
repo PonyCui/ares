@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ARESScript.h"
 #import "ARESHandler.h"
+#import "ARESState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nonnull ARESHandler *)exec:(nonnull ARESScript *)script;
 - (void)addCommand:(ARESCommand *)command;
 - (void)update;
+- (void)save;
+- (void)restore;
+- (ARESState *)currentState;
 
 @end
 

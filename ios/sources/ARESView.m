@@ -17,6 +17,7 @@
 @property (nonatomic, strong) JSContext *context;
 @property (nonatomic, strong) ARESJSBridge *bridge;
 @property (nonatomic, strong) NSMutableArray<ARESCommand *> *commands;
+@property (nonatomic, strong) NSMutableArray<ARESState *> *states;
 @property (nonatomic, assign) CGContextRef cgContext;
 
 @end
@@ -58,6 +59,7 @@
     self.bridge = [[ARESJSBridge alloc] initWithContext:self.context];
     self.bridge.view = self;
     self.commands = [NSMutableArray array];
+    self.states = [NSMutableArray array];
     [self resetCGContext];
 }
 
@@ -99,6 +101,9 @@
                                            self.bounds.size.width * 4,
                                            CGColorSpaceCreateDeviceRGB(),
                                            kCGImageAlphaPremultipliedLast);
+    [self.states removeAllObjects];
+    [self.states addObject:[[ARESState alloc] init]];
+    CGContextSetTextMatrix(self.cgContext, CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
     if (oldImage != NULL) {
         CGContextDrawImage(self.cgContext,
                            CGRectMake(0, 0, CGImageGetWidth(oldImage), CGImageGetHeight(oldImage)),
@@ -125,6 +130,7 @@
 - (void)drawCommands {
     if (self.cgContext != NULL) {
         for (ARESCommand *command in self.commands) {
+            [command draw:self.cgContext view:self];
             [command draw:self.cgContext];
         }
         [self.commands removeAllObjects];
@@ -135,6 +141,26 @@
     [self drawCommands];
     self.layer.contents = CFBridgingRelease(CGBitmapContextCreateImage(self.cgContext));
     self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
+}
+
+- (void)save {
+    if (self.cgContext != NULL) {
+        CGContextSaveGState(self.cgContext);
+        if (self.states.lastObject != nil) {
+            [self.states addObject:[self.states.lastObject clone]];
+        }
+    }
+}
+
+- (void)restore {
+    if (self.cgContext != NULL) {
+        CGContextRestoreGState(self.cgContext);
+        [self.states removeLastObject];
+    }
+}
+
+- (ARESState *)currentState {
+    return self.states.lastObject;
 }
 
 @end

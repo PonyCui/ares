@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *lineCap;
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
+@property (nonatomic, strong) NSString *font;
+@property (nonatomic, strong) NSString *textAlign;
+@property (nonatomic, strong) NSString *textBaseline;
 
 - (void)save;
 - (void)restore;
@@ -44,6 +47,9 @@ JSExportAs(arc, -(void)arc:(float)x y:(float)y r:(float)r start:(float)start end
 JSExportAs(arcTo, -(void)arcTo:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 radius:(float)radius);
 - (void)clip;
 JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
+JSExportAs(fillText, -(void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
+JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
+- (NSDictionary *)measureText:(NSString *)text;
 
 @end
 
@@ -56,6 +62,9 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 @property (nonatomic, strong) NSString *lineCap;
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
+@property (nonatomic, strong) NSString *font;
+@property (nonatomic, strong) NSString *textAlign;
+@property (nonatomic, strong) NSString *textBaseline;
 
 - (void)save;
 - (void)restore;
@@ -80,7 +89,9 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 - (void)arcTo:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 radius:(float)radius;
 - (void)clip;
 - (BOOL)isPointInPath:(float)x y:(float)y;
-
+- (void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
+- (void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
+- (NSDictionary *)measureText:(NSString *)text;
 
 @end
 

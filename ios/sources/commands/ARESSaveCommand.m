@@ -7,11 +7,12 @@
 //
 
 #import "ARESSaveCommand.h"
+#import "ARESView.h"
 
 @implementation ARESSaveCommand
 
-- (void)draw:(CGContextRef)ctx {
-    CGContextSaveGState(ctx);
+- (void)draw:(CGContextRef)ctx view:(ARESView *)view {
+    [view save];
 }
 
 @end
