@@ -3,23 +3,15 @@
  * @param {*} ctx
  */
 
-main = function (ctx) {
+main = function (context) {
 
-    var sin = Math.sin(Math.PI/6);
-      var cos = Math.cos(Math.PI/6);
-      ctx.translate(100, 100);
-      var c = 0;
-      for (var i=0; i <= 12; i++) {
-        c = Math.floor(255 / 12 * i);
-        ctx.fillStyle = "red";
-        ctx.fillRect(0, 0, 100, 10);
-        ctx.transform(cos, sin, -sin, cos, 0, 0);
-      }
-
-      ctx.setTransform(-1, 0, 0, 1, 100, 100);
-      ctx.fillStyle = "red";
-      ctx.fillRect(0, 50, 100, 100);
-
+    context.strokeStyle = 'red';
+    context.fillStyle = 'red';
+    context.lineWidth = 2.0;              // double of the default lineWidth
+    context.font = '50px monospace';
+    context.strokeText ("Hello world!", 0, 50);
+    context.strokeText ("This is a longer string that is limited to 750 pixel.", 0, 100, 750);
+//    context.fillRect(0,0,22,44)
 
     return {
         fillColor: function (color) {

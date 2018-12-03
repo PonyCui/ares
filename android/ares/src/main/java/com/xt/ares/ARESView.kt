@@ -2,6 +2,7 @@ package com.xt.ares
 
 import android.content.Context
 import android.graphics.*
+import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import org.mozilla.javascript.Function
@@ -15,6 +16,7 @@ class ARESView : View {
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
     internal var currentPaint = ARESPaint()
+    internal val currentTextPaint = TextPaint()
     internal val currentPath = ARESPath()
     internal val savedPaints: MutableList<ARESPaint> = mutableListOf()
     private var osCanvas: Canvas? = null

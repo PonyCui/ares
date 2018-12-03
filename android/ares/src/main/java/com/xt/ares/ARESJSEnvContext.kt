@@ -1,12 +1,13 @@
 package com.xt.ares
 
+import android.R.attr.max
 import android.graphics.PathMeasure
 import android.graphics.Region
 import com.xt.ares.commands.*
 import org.mozilla.javascript.ScriptableObject
 import android.R.attr.path
 import android.graphics.RectF
-
+import org.json.JSONObject
 
 
 class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
@@ -54,6 +55,24 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 ARESJSEnvContext::class.java.getDeclaredMethod("getMiterLimit"),
                 ARESJSEnvContext::class.java.getDeclaredMethod("setMiterLimit", Double::class.java),
                 0)
+        this.defineProperty(
+                "font",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getFont"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setFont", String::class.java),
+                0)
+        this.defineProperty(
+                "textAlign",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getTextAlign"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setTextAlign", String::class.java),
+                0)
+        this.defineProperty(
+                "textBaseline",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getTextBaseline"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setTextBaseline", String::class.java),
+                0)
         this.defineFunctionProperties(arrayOf(
                 "save",
                 "restore",
@@ -77,7 +96,10 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "arc",
                 "arcTo",
                 "clip",
-                "isPointInPath"
+                "isPointInPath",
+                "fillText",
+                "strokeText",
+                "measureText"
                 ), ARESJSEnvContext::class.java, 0)
     }
 
@@ -155,6 +177,24 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
             this.view.addCommand(ARESMiterLimitCommand(value))
         }
 
+    var font: String = "10px"
+        set(value) {
+            field = value
+            this.view.addCommand(ARESFontCommand(value))
+        }
+
+    var textAlign: String = "left"
+        set(value) {
+            field = value
+            this.view.addCommand(ARESTextAlignCommand(value))
+        }
+
+    var textBaseline: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESTextBaselineCommand(value))
+        }
+
     fun fillRect(x: Double, y: Double, w: Double, h: Double) {
         this.view.addCommand(ARESFillRectCommand(x, y, w, h))
     }
@@ -223,5 +263,23 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         return region.contains(x.toInt(), y.toInt())
     }
 
+    fun fillText(text: String, x: Double, y: Double, maxWidth: Double) {
+        this.view.addCommand(ARESFillTextCommand(text, x, y, maxWidth))
+    }
+
+    fun strokeText(text: String, x: Double, y: Double, maxWidth: Double) {
+        this.view.addCommand(ARESStrokeTextCommand(text, x, y, maxWidth))
+    }
+
+    fun measureText(text: String): TextMeasureResult {
+        aresStateFont?.let {
+            view.currentTextPaint.textSize = it.textSize
+            view.currentTextPaint.typeface = it.typeface
+            return TextMeasureResult(view.currentTextPaint.measureText(text).toDouble())
+        }
+        return TextMeasureResult(0.0)
+    }
+
+    class TextMeasureResult(val width: Double)
 
 }
