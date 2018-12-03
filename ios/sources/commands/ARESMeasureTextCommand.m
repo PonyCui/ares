@@ -15,7 +15,7 @@
     NSAttributedString *attributedString = [[NSAttributedString alloc]
                                             initWithString:text
                                             attributes:@{
-                                                         NSFontAttributeName: [ARESFontCommand currentFont] ?: [UIFont systemFontOfSize:10]
+                                                         NSFontAttributeName: [ARESFontCommand stateFont] ?: [UIFont systemFontOfSize:10]
                                                          }];
     return @{
              @"width": @([attributedString boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ARESFontCommand : ARESCommand
 
 + (UIFont *)currentFont;
++ (UIFont *)stateFont;
 
 @property (nonatomic, strong) UIFont *font;
 

@@ -16,6 +16,12 @@ static UIFont *currentFont;
     return currentFont;
 }
 
+static UIFont *stateFont;
+
++ (UIFont *)stateFont {
+    return stateFont;
+}
+
 - (instancetype)initWithValue:(NSString *)value
 {
     self = [super init];
@@ -55,7 +61,7 @@ static UIFont *currentFont;
     else {
         self.font = [UIFont systemFontOfSize:10];
     }
-    currentFont = self.font;
+    stateFont = self.font;
 }
 
 - (void)draw:(CGContextRef)ctx {
