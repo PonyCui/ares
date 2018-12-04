@@ -17,6 +17,7 @@
 #import "ARESTransformCommand.h"
 #import "ARESSetTransformCommand.h"
 #import "ARESGlobalAlphaCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 #import "ARESFillStyleCommand.h"
 #import "ARESStrokeStyleCommand.h"
 #import "ARESLineWidthCommand.h"
@@ -88,6 +89,11 @@
 - (void)setGlobalAlpha:(float)globalAlpha {
     _globalAlpha = globalAlpha;
     [self addCommandToView:[[ARESGlobalAlphaCommand alloc] initWithValue:globalAlpha]];
+}
+
+- (void)setGlobalCompositeOperation:(NSString *)globalCompositeOperation {
+    _globalCompositeOperation = globalCompositeOperation;
+    [self addCommandToView:[[ARESGlobalCompositeOperationCommand alloc] initWithValue:globalCompositeOperation]];
 }
 
 - (void)setFillStyle:(NSString *)fillStyle {

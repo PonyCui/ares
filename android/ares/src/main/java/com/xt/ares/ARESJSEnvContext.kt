@@ -20,6 +20,12 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 ARESJSEnvContext::class.java.getDeclaredMethod("setGlobalAlpha", Double::class.java),
                 0)
         this.defineProperty(
+                "globalCompositeOperation",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getGlobalCompositeOperation"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setGlobalCompositeOperation", String::class.java),
+                0)
+        this.defineProperty(
                 "fillStyle",
                 null,
                 ARESJSEnvContext::class.java.getDeclaredMethod("getFillStyle"),
@@ -163,6 +169,12 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         set(value) {
             field = value
             this.view.addCommand(ARESGlobalAlphaCommand(value))
+        }
+
+    var globalCompositeOperation: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESGlobalCompositeOperationCommand(value))
         }
 
     var fillStyle: String = ""

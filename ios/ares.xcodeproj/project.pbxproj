@@ -57,6 +57,7 @@
 		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
+		63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +158,8 @@
 		6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineWidthCommand.m; sourceTree = "<group>"; };
 		6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeRectCommand.h; sourceTree = "<group>"; };
 		6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeRectCommand.m; sourceTree = "<group>"; };
+		63A45CB521B62C1E003A196A /* ARESGlobalCompositeOperationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESGlobalCompositeOperationCommand.h; sourceTree = "<group>"; };
+		63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESGlobalCompositeOperationCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				6312654D21B14BDF000AA19A /* ARESSetTransformCommand.m */,
 				6312650421AFD124000AA19A /* ARESGlobalAlphaCommand.h */,
 				6312650521AFD124000AA19A /* ARESGlobalAlphaCommand.m */,
+				63A45CB521B62C1E003A196A /* ARESGlobalCompositeOperationCommand.h */,
+				63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */,
 				630F004521AE8D200009D721 /* ARESFillStyleCommand.h */,
 				630F004621AE8D200009D721 /* ARESFillStyleCommand.m */,
 				6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */,
@@ -423,6 +428,7 @@
 				6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */,
 				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
 				6365398521B621D4005B4A01 /* ARESShadowCommand.m in Sources */,
+				63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */,
 				6365397021B5028B005B4A01 /* ARESFontCommand.m in Sources */,
 				6312650621AFD124000AA19A /* ARESGlobalAlphaCommand.m in Sources */,
 				630F004021AE86400009D721 /* ARESHandler.m in Sources */,

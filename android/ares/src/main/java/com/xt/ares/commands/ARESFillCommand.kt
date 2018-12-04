@@ -12,6 +12,9 @@ class ARESFillCommand: ARESCommand() {
         view.currentPaint.color = view.currentPaint.fillColor
         view.currentPaint.style = Paint.Style.FILL
         canvas.drawPath(view.currentPath, view.currentPaint)
+        if (ARESGlobalCompositeOperationCommand.savedLayer) {
+            ARESGlobalCompositeOperationCommand.restoreLayer(view, canvas)
+        }
     }
 
 }

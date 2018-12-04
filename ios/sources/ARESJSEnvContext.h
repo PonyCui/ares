@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ARESJSEnvContextExport <JSExport>
 
 @property (nonatomic, assign) float globalAlpha;
+@property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;
@@ -60,6 +61,7 @@ JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y 
 @interface ARESJSEnvContext : NSObject <ARESJSEnvContextExport>
 
 @property (nonatomic, assign) float globalAlpha;
+@property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;

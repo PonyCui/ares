@@ -5,15 +5,16 @@
 
 main = function (context) {
 
-    context.font = '28px Arial';
     context.fillStyle = 'red';
-    // shadow settings
-    context.shadowColor = 'yellow';
-    context.shadowBlur = 5;
-    context.shadowOffsetX = 0;
-    context.shadowOffsetY = 0;
-    // add the text
-    context.fillText("shadow: blur 5, color blue, x- and y-offset 0", 20, 50);
+    context.fillRect(0, 0, 60, 60);
+    // 2. set the globalCompositeOperation
+    context.globalCompositeOperation = "lighter";
+    // 3. add the cyan circle
+    context.fillStyle = 'yellow';
+    // context.beginPath()
+    context.arc(54, 54, 36, 0, 2 * Math.PI, false);
+    
+    context.fill();
 
     // return {
     //     fillColor: function (color) {

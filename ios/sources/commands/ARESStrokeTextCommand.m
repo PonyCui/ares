@@ -11,6 +11,7 @@
 #import "ARESTextAlignCommand.h"
 #import "ARESTextBaselineCommand.h"
 #import "ARESView.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 #import <CoreText/CoreText.h>
 
 @implementation ARESStrokeTextCommand
@@ -78,6 +79,10 @@
         CGContextSetTextPosition(ctx, drawX, self.y);
         CTLineDraw(lineRef, ctx);
         CFRelease(lineRef);
+    }
+    if ([ARESGlobalCompositeOperationCommand shouldEndTrasparencyLayer]) {
+        CGContextEndTransparencyLayer(ctx);
+        [ARESGlobalCompositeOperationCommand setEndedTrasparencyLayer];
     }
 }
 

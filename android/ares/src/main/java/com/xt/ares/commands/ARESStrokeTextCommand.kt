@@ -39,6 +39,9 @@ class ARESStrokeTextCommand(val text: String, val x: Double, val y: Double, val 
         else {
             canvas.drawText(this.text, drawX, drawY, view.currentTextPaint)
         }
+        if (ARESGlobalCompositeOperationCommand.savedLayer) {
+            ARESGlobalCompositeOperationCommand.restoreLayer(view, canvas)
+        }
     }
 
 }
