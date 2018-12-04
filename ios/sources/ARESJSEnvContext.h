@@ -23,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *font;
 @property (nonatomic, strong) NSString *textAlign;
 @property (nonatomic, strong) NSString *textBaseline;
+@property (nonatomic, assign) float shadowOffsetX;
+@property (nonatomic, assign) float shadowOffsetY;
+@property (nonatomic, assign) float shadowBlur;
+@property (nonatomic, strong) NSString *shadowColor;
 
 - (void)save;
 - (void)restore;
@@ -65,6 +69,10 @@ JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y 
 @property (nonatomic, strong) NSString *font;
 @property (nonatomic, strong) NSString *textAlign;
 @property (nonatomic, strong) NSString *textBaseline;
+@property (nonatomic, assign) float shadowOffsetX;
+@property (nonatomic, assign) float shadowOffsetY;
+@property (nonatomic, assign) float shadowBlur;
+@property (nonatomic, strong) NSString *shadowColor;
 
 - (void)save;
 - (void)restore;

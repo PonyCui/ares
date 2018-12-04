@@ -5,24 +5,15 @@
 
 main = function (context) {
 
-    // set both the strokeStyle and the fillStyle to black
-    context.strokeStyle = 'red';
+    context.font = '28px Arial';
     context.fillStyle = 'red';
-    // first line of text in the default font:
-    context.strokeText(context.font, 10, 20);
-    context.fillText(context.font, 350, 20);
-    // second line of text:
-    context.font = '20px fantasy';
-    context.strokeText(context.font, 10, 40);
-    context.fillText(context.font, 350, 40);
-    // third line of text:
-    context.font = '40px Verdana';
-    context.strokeText(context.font, 10, 80);
-    context.fillText(context.font, 350, 80);
-    // fourth line of text:
-    context.font = '60px Arial';
-    context.strokeText(context.font, 10, 140);
-    context.fillText(context.font, 350, 140);
+    // shadow settings
+    context.shadowColor = 'yellow';
+    context.shadowBlur = 5;
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
+    // add the text
+    context.fillText("shadow: blur 5, color blue, x- and y-offset 0", 20, 50);
 
     // return {
     //     fillColor: function (color) {

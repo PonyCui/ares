@@ -23,6 +23,7 @@
 #import "ARESLineCapCommand.h"
 #import "ARESLineJoinCommand.h"
 #import "ARESMiterLimitCommand.h"
+#import "ARESShadowCommand.h"
 #import "ARESFillRectCommand.h"
 #import "ARESStrokeRectCommand.h"
 #import "ARESClearRectCommand.h"
@@ -117,6 +118,38 @@
 - (void)setMiterLimit:(float)miterLimit {
     _miterLimit = miterLimit;
     [self addCommandToView:[[ARESMiterLimitCommand alloc] initWithValue:miterLimit]];
+}
+
+- (void)setShadowOffsetX:(float)shadowOffsetX {
+    _shadowOffsetX = shadowOffsetX;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:shadowOffsetX
+                                                              y:self.shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowOffsetY:(float)shadowOffsetY {
+    _shadowOffsetY = shadowOffsetY;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetX
+                                                              y:shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowBlur:(float)shadowBlur {
+    _shadowBlur = shadowBlur;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetX
+                                                              y:self.shadowOffsetY
+                                                           blur:shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowColor:(NSString *)shadowColor {
+    _shadowColor = shadowColor;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetY
+                                                              y:self.shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:shadowColor]];
 }
 
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h {

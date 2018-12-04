@@ -5,13 +5,24 @@
 
 main = function (context) {
 
-    context.strokeStyle = 'red';
     context.fillStyle = 'red';
-    context.lineWidth = 2.0;              // double of the default lineWidth
-    context.font = '50px monospace';
-    context.strokeText ("Hello world!", 0, 50);
-    context.strokeText ("This is a longer string that is limited to 750 pixel.", 0, 100, 750);
-//    context.fillRect(0,0,22,44)
+      context.font = '40px Arial';
+      // set the shadow color to a visible 'orange' and the x- and y-offset to 15
+      context.shadowColor = 'yellow';
+      context.shadowOffsetX = 15;
+      context.shadowOffsetY = 15;
+      // #1
+      context.shadowBlur = 0;
+      context.fillText ("#1",  50, 50);
+      // #2
+      context.shadowBlur = 2;
+      context.fillText ("#2", 200, 50);
+      // #3
+      context.shadowBlur = 4;
+      context.fillText ("#3", 350, 50);
+      // #4
+      context.shadowBlur = 8;
+      context.fillText ("#4", 500, 50);
 
     return {
         fillColor: function (color) {

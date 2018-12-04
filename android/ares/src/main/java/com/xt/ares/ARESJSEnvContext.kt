@@ -56,6 +56,30 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 ARESJSEnvContext::class.java.getDeclaredMethod("setMiterLimit", Double::class.java),
                 0)
         this.defineProperty(
+                "shadowOffsetX",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowOffsetX"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowOffsetX", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowOffsetY",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowOffsetY"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowOffsetY", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowBlur",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowBlur"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowBlur", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowColor",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowColor"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowColor", String::class.java),
+                0)
+        this.defineProperty(
                 "font",
                 null,
                 ARESJSEnvContext::class.java.getDeclaredMethod("getFont"),
@@ -175,6 +199,30 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         set(value) {
             field = value
             this.view.addCommand(ARESMiterLimitCommand(value))
+        }
+
+    var shadowOffsetX: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(value, this.shadowOffsetY, this.shadowBlur, this.shadowColor))
+        }
+
+    var shadowOffsetY: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, value, this.shadowBlur, this.shadowColor))
+        }
+
+    var shadowBlur: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, this.shadowOffsetY, value, this.shadowColor))
+        }
+
+    var shadowColor: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, this.shadowOffsetY, this.shadowBlur, value))
         }
 
     var font: String = "10px"

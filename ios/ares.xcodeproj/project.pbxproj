@@ -53,6 +53,7 @@
 		6365397C21B502E8005B4A01 /* ARESStrokeTextCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365397B21B502E8005B4A01 /* ARESStrokeTextCommand.m */; };
 		6365397F21B502FC005B4A01 /* ARESMeasureTextCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365397E21B502FC005B4A01 /* ARESMeasureTextCommand.m */; };
 		6365398221B513B3005B4A01 /* ARESState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365398121B513B3005B4A01 /* ARESState.m */; };
+		6365398521B621D4005B4A01 /* ARESShadowCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6365398421B621D4005B4A01 /* ARESShadowCommand.m */; };
 		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
@@ -148,6 +149,8 @@
 		6365397E21B502FC005B4A01 /* ARESMeasureTextCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESMeasureTextCommand.m; sourceTree = "<group>"; };
 		6365398021B513B3005B4A01 /* ARESState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESState.h; sourceTree = "<group>"; };
 		6365398121B513B3005B4A01 /* ARESState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESState.m; sourceTree = "<group>"; };
+		6365398321B621D4005B4A01 /* ARESShadowCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESShadowCommand.h; sourceTree = "<group>"; };
+		6365398421B621D4005B4A01 /* ARESShadowCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESShadowCommand.m; sourceTree = "<group>"; };
 		6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeStyleCommand.h; sourceTree = "<group>"; };
 		6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeStyleCommand.m; sourceTree = "<group>"; };
 		6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESLineWidthCommand.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				6365397B21B502E8005B4A01 /* ARESStrokeTextCommand.m */,
 				6365397D21B502FC005B4A01 /* ARESMeasureTextCommand.h */,
 				6365397E21B502FC005B4A01 /* ARESMeasureTextCommand.m */,
+				6365398321B621D4005B4A01 /* ARESShadowCommand.h */,
+				6365398421B621D4005B4A01 /* ARESShadowCommand.m */,
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				6312652A21AFF8A0000AA19A /* ARESQuadraticCurveToCommand.m in Sources */,
 				6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */,
 				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
+				6365398521B621D4005B4A01 /* ARESShadowCommand.m in Sources */,
 				6365397021B5028B005B4A01 /* ARESFontCommand.m in Sources */,
 				6312650621AFD124000AA19A /* ARESGlobalAlphaCommand.m in Sources */,
 				630F004021AE86400009D721 /* ARESHandler.m in Sources */,
