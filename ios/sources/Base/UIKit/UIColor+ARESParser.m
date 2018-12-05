@@ -11,7 +11,7 @@
 
 @implementation UIColor (ARESParser)
 
-+ (instancetype)parseColorWithValue:(NSString *)value {
++ (instancetype)ares_parseColorWithValue:(NSString *)value {
 
 //    NSString *abbr = @"^#([a-f0-9]{3,4})$";
 //    NSString *hex = @"^#([a-f0-9]{6})([a-f0-9]{2})?$";
@@ -38,7 +38,7 @@
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
     NSArray *hexResults = [rgbaRegular matchesInString:value options:NSMatchingReportProgress range:NSMakeRange(0, value.length)];
-    if(hexResults.count > 0) {
+    if (hexResults.count > 0) {
     }
     
     return nil;
@@ -59,7 +59,7 @@
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
     NSArray *hexResults = [hexRegular matchesInString:value options:NSMatchingReportProgress range:NSMakeRange(0, value.length)];
-    if(hexResults.count > 0) {
+    if (hexResults.count > 0) {
         NSTextCheckingResult *result = hexResults.firstObject;
         NSString *colorString = [[value substringWithRange:result.range] stringByReplacingOccurrencesOfString:@"#" withString:@""];
         CGFloat alpha, red, blue, green;
@@ -98,13 +98,13 @@
                                alpha: alpha];
     }
     if ([value isEqualToString:@"transparent"]) {
-        return [UIColor colorWithRed: 0
-                               green: 0
-                                blue: 0
-                               alpha: 0];
+        return [UIColor colorWithRed: 0.0f
+                               green: 0.0f
+                                blue: 0.0f
+                               alpha: 0.0f];
     }
     // The default value is 'black'
-    return [self colorWithColorName:value];
+    return [self ares_colorWithColorName:value];
 }
 
 + (CGFloat)parseComponentFrom:(NSString *)string start:(NSUInteger)start length:(NSUInteger)length {

@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        _color = [UIColor parseColorWithValue:value];
+        _color = [UIColor ares_parseColorWithValue:value];
     }
     return self;
 }
