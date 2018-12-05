@@ -46,6 +46,8 @@
 #import "ARESFillTextCommand.h"
 #import "ARESStrokeTextCommand.h"
 #import "ARESMeasureTextCommand.h"
+#import "ARESDrawImageCommand.h"
+#import "ARESJSImage.h"
 
 @implementation ARESJSEnvContext
 
@@ -53,6 +55,7 @@
 {
     self = [super init];
     if (self) {
+        _lineWidth = 1.0;
         _font = @"10px sans-serif";
     }
     return self;
@@ -275,6 +278,45 @@
 
 - (NSDictionary *)measureText:(NSString *)text {
     return [ARESMeasureTextCommand measureText:text];
+}
+
+- (void)drawImage:(ARESJSImage *)image dx:(float)dx dy:(float)dy dw:(float)dw dh:(float)dh {
+    if (image.image != nil) {
+        
+    }
+}
+
+- (void)drawImage:(ARESJSImage *)image
+           sxOrDx:(float)sxOrDx
+           syOrDy:(float)syOrDy
+           swOrDw:(float)swOrDw
+           shOrDh:(float)shOrDh
+               dx:(float)dx
+               dy:(float)dy
+               dw:(float)dw
+               dh:(float)dh {
+    if (!isnan(dx)) {
+        [self addCommandToView:[[ARESDrawImageCommand alloc] initWithImage:image.image
+                                                                        dx:dx
+                                                                        dy:dy
+                                                                        dw:dw
+                                                                        dh:dh
+                                                                        sx:sxOrDx
+                                                                        sy:syOrDy
+                                                                        sw:swOrDw
+                                                                        sh:shOrDh]];
+    }
+    else {
+        [self addCommandToView:[[ARESDrawImageCommand alloc] initWithImage:image.image
+                                                                        dx:sxOrDx
+                                                                        dy:syOrDy
+                                                                        dw:swOrDw
+                                                                        dh:shOrDh
+                                                                        sx:NAN
+                                                                        sy:NAN
+                                                                        sw:NAN
+                                                                        sh:NAN]];
+    }
 }
 
 - (void)addCommandToView:(ARESCommand *)command {

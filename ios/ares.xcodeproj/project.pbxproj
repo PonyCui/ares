@@ -58,6 +58,9 @@
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
 		63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */; };
+		63A45CBA21B6879B003A196A /* ARESJSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB921B6879B003A196A /* ARESJSImage.m */; };
+		63A45CBC21B68982003A196A /* horse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63A45CBB21B68982003A196A /* horse.jpg */; };
+		63A45CBF21B68D28003A196A /* ARESDrawImageCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CBE21B68D28003A196A /* ARESDrawImageCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +163,11 @@
 		6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeRectCommand.m; sourceTree = "<group>"; };
 		63A45CB521B62C1E003A196A /* ARESGlobalCompositeOperationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESGlobalCompositeOperationCommand.h; sourceTree = "<group>"; };
 		63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESGlobalCompositeOperationCommand.m; sourceTree = "<group>"; };
+		63A45CB821B6879B003A196A /* ARESJSImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESJSImage.h; sourceTree = "<group>"; };
+		63A45CB921B6879B003A196A /* ARESJSImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESJSImage.m; sourceTree = "<group>"; };
+		63A45CBB21B68982003A196A /* horse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = horse.jpg; sourceTree = "<group>"; };
+		63A45CBD21B68D28003A196A /* ARESDrawImageCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESDrawImageCommand.h; sourceTree = "<group>"; };
+		63A45CBE21B68D28003A196A /* ARESDrawImageCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESDrawImageCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,7 @@
 		630F001D21AE83670009D721 /* ares */ = {
 			isa = PBXGroup;
 			children = (
+				63A45CBB21B68982003A196A /* horse.jpg */,
 				630F001E21AE83670009D721 /* AppDelegate.h */,
 				630F001F21AE83680009D721 /* AppDelegate.m */,
 				630F002121AE83680009D721 /* ViewController.h */,
@@ -216,6 +225,8 @@
 				630F004921AE8D8B0009D721 /* ARESJSBridge.m */,
 				630F004B21AE8F620009D721 /* ARESJSEnvContext.h */,
 				630F004C21AE8F620009D721 /* ARESJSEnvContext.m */,
+				63A45CB821B6879B003A196A /* ARESJSImage.h */,
+				63A45CB921B6879B003A196A /* ARESJSImage.m */,
 				630F003B21AE861C0009D721 /* ARESScript.h */,
 				630F003C21AE861C0009D721 /* ARESScript.m */,
 				630F003E21AE86400009D721 /* ARESHandler.h */,
@@ -315,6 +326,8 @@
 				6365397E21B502FC005B4A01 /* ARESMeasureTextCommand.m */,
 				6365398321B621D4005B4A01 /* ARESShadowCommand.h */,
 				6365398421B621D4005B4A01 /* ARESShadowCommand.m */,
+				63A45CBD21B68D28003A196A /* ARESDrawImageCommand.h */,
+				63A45CBE21B68D28003A196A /* ARESDrawImageCommand.m */,
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -379,6 +392,7 @@
 			files = (
 				630F003721AE83CF0009D721 /* drawCircle.js in Resources */,
 				630F002B21AE83690009D721 /* LaunchScreen.storyboard in Resources */,
+				63A45CBC21B68982003A196A /* horse.jpg in Resources */,
 				630F002821AE83690009D721 /* Assets.xcassets in Resources */,
 				630F002621AE83680009D721 /* Main.storyboard in Resources */,
 			);
@@ -394,6 +408,7 @@
 				6312652721AFF893000AA19A /* ARESRectCommand.m in Sources */,
 				6365398221B513B3005B4A01 /* ARESState.m in Sources */,
 				6312654B21B14BCE000AA19A /* ARESTransformCommand.m in Sources */,
+				63A45CBA21B6879B003A196A /* ARESJSImage.m in Sources */,
 				6312650921AFD2CD000AA19A /* ARESClearRectCommand.m in Sources */,
 				6312653321AFF8C2000AA19A /* ARESArcToCommand.m in Sources */,
 				6312651521AFF819000AA19A /* ARESBeginPathCommand.m in Sources */,
@@ -426,6 +441,7 @@
 				6312654521B14BAE000AA19A /* ARESRotateCommand.m in Sources */,
 				6312652A21AFF8A0000AA19A /* ARESQuadraticCurveToCommand.m in Sources */,
 				6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */,
+				63A45CBF21B68D28003A196A /* ARESDrawImageCommand.m in Sources */,
 				630F005021AE94DA0009D721 /* ARESFillRectCommand.m in Sources */,
 				6365398521B621D4005B4A01 /* ARESShadowCommand.m in Sources */,
 				63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */,

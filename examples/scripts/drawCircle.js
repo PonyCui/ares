@@ -5,16 +5,11 @@
 
 main = function (context) {
 
-    context.fillStyle = 'red';
-    context.fillRect(0, 0, 60, 60);
-    // 2. set the globalCompositeOperation
-    context.globalCompositeOperation = "lighter";
-    // 3. add the cyan circle
-    context.fillStyle = 'yellow';
-    // context.beginPath()
-    context.arc(54, 54, 36, 0, 2 * Math.PI, false);
-    
-    context.fill();
+    var image = new Image();               // 1. create the image: (a). create an image object
+    image.src = "horse.jpg";               //                      (b). set it to the jpg file
+    image.onload = function () {
+        context.drawImage(image, 150, 40, 130, 120, 75, 100, 200, 150);
+    }
 
     // return {
     //     fillColor: function (color) {

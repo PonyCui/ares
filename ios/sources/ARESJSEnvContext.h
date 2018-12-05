@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ARESJSImage;
+
 @protocol ARESJSEnvContextExport <JSExport>
 
 @property (nonatomic, assign) float globalAlpha;
@@ -55,6 +57,15 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 JSExportAs(fillText, -(void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
 JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
 - (NSDictionary *)measureText:(NSString *)text;
+JSExportAs(drawImage, -(void)drawImage:(ARESJSImage *)image
+           sxOrDx:(float)sxOrDx
+           syOrDy:(float)syOrDy
+           swOrDw:(float)swOrDw
+           shOrDh:(float)shOrDh
+           dx:(float)dx
+           dy:(float)dy
+           dw:(float)dw
+           dh:(float)dh);
 
 @end
 
@@ -102,6 +113,15 @@ JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y 
 - (void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
 - (void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
 - (NSDictionary *)measureText:(NSString *)text;
+- (void)drawImage:(ARESJSImage *)image
+           sxOrDx:(float)sxOrDx
+           syOrDy:(float)syOrDy
+           swOrDw:(float)swOrDw
+           shOrDh:(float)shOrDh
+               dx:(float)dx
+               dy:(float)dy
+               dw:(float)dw
+               dh:(float)dh;
 
 @end
 

@@ -139,8 +139,10 @@
 
 - (void)update {
     [self drawCommands];
-    self.layer.contents = CFBridgingRelease(CGBitmapContextCreateImage(self.cgContext));
-    self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
+    if (self.cgContext != NULL) {
+        self.layer.contents = CFBridgingRelease(CGBitmapContextCreateImage(self.cgContext));
+        self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
+    }
 }
 
 - (void)save {

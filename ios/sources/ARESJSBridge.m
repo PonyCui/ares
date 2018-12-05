@@ -8,6 +8,7 @@
 
 #import "ARESJSBridge.h"
 #import "ARESJSEnvContext.h"
+#import "ARESJSImage.h"
 #import <objc/runtime.h>
 
 @interface ARESJSBridge ()
@@ -39,6 +40,9 @@ static int kContextKey;
                              &kContextKey,
                              self,
                              OBJC_ASSOCIATION_ASSIGN);
+    self.context[@"Image"] = ^ {
+        return [[ARESJSImage alloc] init];
+    };
 }
 
 @end
