@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (ARESName)
 
-+ (instancetype)colorWithColorName:(NSString *) colorName;
++ (instancetype)ares_colorWithColorName:(NSString *) colorName;
 
 @end
 

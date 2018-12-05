@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (ARESParser)
 
-+ (instancetype)parseColorWithValue:(NSString *)value;
++ (instancetype)ares_parseColorWithValue:(NSString *)value;
 
 @end
 

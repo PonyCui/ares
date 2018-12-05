@@ -168,17 +168,17 @@ static NSDictionary *_staticColorList;
     return _staticColorList;
 }
 
++ (instancetype)ares_colorWithColorName:(NSString *)colorName {
+    return [self colorWithRGBArray:[self staticColorList][colorName]];
+}
+
 + (instancetype)colorWithRGBArray:(NSArray *)valueArray {
     if (valueArray == nil) {
         return nil;
     }
-    return [UIColor colorWithRed:[valueArray[0] floatValue] / 255.0
-                           green:[valueArray[1] floatValue] / 255.0
-                            blue:[valueArray[2] floatValue] / 255.0
-                           alpha:1.0];
-}
-
-+ (instancetype)colorWithColorName:(NSString *)colorName {
-    return [self colorWithRGBArray:[self staticColorList][colorName]];
+    return [UIColor colorWithRed:[valueArray[0] floatValue] / 255.0f
+                           green:[valueArray[1] floatValue] / 255.0f
+                            blue:[valueArray[2] floatValue] / 255.0f
+                           alpha:1.0f];
 }
 @end
