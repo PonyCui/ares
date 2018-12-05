@@ -7,6 +7,7 @@
 //
 
 #import "ARESFillRectCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 
 @interface ARESFillRectCommand ()
 
@@ -28,6 +29,10 @@
 - (void)draw:(CGContextRef)ctx {
     CGContextAddPath(ctx, self.bezierPath.CGPath);
     CGContextFillPath(ctx);
+    if ([ARESGlobalCompositeOperationCommand shouldEndTrasparencyLayer]) {
+        CGContextEndTransparencyLayer(ctx);
+        [ARESGlobalCompositeOperationCommand setEndedTrasparencyLayer];
+    }
 }
 
 @end

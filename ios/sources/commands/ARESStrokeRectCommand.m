@@ -7,6 +7,7 @@
 //
 
 #import "ARESStrokeRectCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 
 @interface ARESStrokeRectCommand ()
 
@@ -28,6 +29,10 @@
 - (void)draw:(CGContextRef)ctx {
     CGContextAddPath(ctx, self.bezierPath.CGPath);
     CGContextStrokePath(ctx);
+    if ([ARESGlobalCompositeOperationCommand shouldEndTrasparencyLayer]) {
+        CGContextEndTransparencyLayer(ctx);
+        [ARESGlobalCompositeOperationCommand setEndedTrasparencyLayer];
+    }
 }
 
 @end

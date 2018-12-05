@@ -9,13 +9,22 @@
 #import "ARESJSEnvContext.h"
 #import "ARESJSBridge.h"
 #import "ARESView.h"
+#import "ARESSaveCommand.h"
+#import "ARESRestoreCommand.h"
+#import "ARESScaleCommand.h"
+#import "ARESRotateCommand.h"
+#import "ARESTranslateCommand.h"
+#import "ARESTransformCommand.h"
+#import "ARESSetTransformCommand.h"
 #import "ARESGlobalAlphaCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 #import "ARESFillStyleCommand.h"
 #import "ARESStrokeStyleCommand.h"
 #import "ARESLineWidthCommand.h"
 #import "ARESLineCapCommand.h"
 #import "ARESLineJoinCommand.h"
 #import "ARESMiterLimitCommand.h"
+#import "ARESShadowCommand.h"
 #import "ARESFillRectCommand.h"
 #import "ARESStrokeRectCommand.h"
 #import "ARESClearRectCommand.h"
@@ -31,12 +40,60 @@
 #import "ARESArcCommand.h"
 #import "ARESArcToCommand.h"
 #import "ARESClipCommand.h"
+#import "ARESFontCommand.h"
+#import "ARESTextAlignCommand.h"
+#import "ARESTextBaselineCommand.h"
+#import "ARESFillTextCommand.h"
+#import "ARESStrokeTextCommand.h"
+#import "ARESMeasureTextCommand.h"
 
 @implementation ARESJSEnvContext
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _font = @"10px sans-serif";
+    }
+    return self;
+}
+
+- (void)save {
+    [self addCommandToView:[[ARESSaveCommand alloc] init]];
+}
+
+- (void)restore {
+    [self addCommandToView:[[ARESRestoreCommand alloc] init]];
+}
+
+- (void)scale:(float)x y:(float)y {
+    [self addCommandToView:[[ARESScaleCommand alloc] initWithSx:x sy:y]];
+}
+
+- (void)rotate:(float)angle {
+    [self addCommandToView:[[ARESRotateCommand alloc] initWithAngle:angle]];
+}
+
+- (void)translate:(float)x y:(float)y {
+    [self addCommandToView:[[ARESTranslateCommand alloc] initWithTx:x ty:y]];
+}
+
+- (void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty {
+    [self addCommandToView:[[ARESTransformCommand alloc] initWithA:a b:b c:c d:d tx:tx ty:ty]];
+}
+
+- (void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty {
+    [self addCommandToView:[[ARESSetTransformCommand alloc] initWithA:a b:b c:c d:d tx:tx ty:ty]];
+}
 
 - (void)setGlobalAlpha:(float)globalAlpha {
     _globalAlpha = globalAlpha;
     [self addCommandToView:[[ARESGlobalAlphaCommand alloc] initWithValue:globalAlpha]];
+}
+
+- (void)setGlobalCompositeOperation:(NSString *)globalCompositeOperation {
+    _globalCompositeOperation = globalCompositeOperation;
+    [self addCommandToView:[[ARESGlobalCompositeOperationCommand alloc] initWithValue:globalCompositeOperation]];
 }
 
 - (void)setFillStyle:(NSString *)fillStyle {
@@ -67,6 +124,38 @@
 - (void)setMiterLimit:(float)miterLimit {
     _miterLimit = miterLimit;
     [self addCommandToView:[[ARESMiterLimitCommand alloc] initWithValue:miterLimit]];
+}
+
+- (void)setShadowOffsetX:(float)shadowOffsetX {
+    _shadowOffsetX = shadowOffsetX;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:shadowOffsetX
+                                                              y:self.shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowOffsetY:(float)shadowOffsetY {
+    _shadowOffsetY = shadowOffsetY;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetX
+                                                              y:shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowBlur:(float)shadowBlur {
+    _shadowBlur = shadowBlur;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetX
+                                                              y:self.shadowOffsetY
+                                                           blur:shadowBlur
+                                                    colorString:self.shadowColor]];
+}
+
+- (void)setShadowColor:(NSString *)shadowColor {
+    _shadowColor = shadowColor;
+    [self addCommandToView:[[ARESShadowCommand alloc] initWithX:self.shadowOffsetY
+                                                              y:self.shadowOffsetY
+                                                           blur:self.shadowBlur
+                                                    colorString:shadowColor]];
 }
 
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h {
@@ -153,6 +242,39 @@
 
 - (BOOL)isPointInPath:(float)x y:(float)y {
     return [[ARESBeginPathCommand currentPath] containsPoint:CGPointMake(x, y)];
+}
+
+- (void)setFont:(NSString *)font {
+    _font = font;
+    [self addCommandToView:[[ARESFontCommand alloc] initWithValue:font]];
+}
+
+- (void)setTextAlign:(NSString *)textAlign {
+    _textAlign = textAlign;
+    [self addCommandToView:[[ARESTextAlignCommand alloc] initWithValue:textAlign]];
+}
+
+- (void)setTextBaseline:(NSString *)textBaseline {
+    _textBaseline = textBaseline;
+    [self addCommandToView:[[ARESTextBaselineCommand alloc] initWithValue:textBaseline]];
+}
+
+- (void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth {
+    [self addCommandToView:[[ARESFillTextCommand alloc] initWithText:text
+                                                                   x:x
+                                                                   y:y
+                                                            maxWidth:maxWidth]];
+}
+
+- (void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth {
+    [self addCommandToView:[[ARESStrokeTextCommand alloc] initWithText:text
+                                                                     x:x
+                                                                     y:y
+                                                              maxWidth:maxWidth]];
+}
+
+- (NSDictionary *)measureText:(NSString *)text {
+    return [ARESMeasureTextCommand measureText:text];
 }
 
 - (void)addCommandToView:(ARESCommand *)command {

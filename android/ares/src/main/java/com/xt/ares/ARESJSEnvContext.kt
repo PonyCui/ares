@@ -1,12 +1,13 @@
 package com.xt.ares
 
+import android.R.attr.max
 import android.graphics.PathMeasure
 import android.graphics.Region
 import com.xt.ares.commands.*
 import org.mozilla.javascript.ScriptableObject
 import android.R.attr.path
 import android.graphics.RectF
-
+import org.json.JSONObject
 
 
 class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
@@ -17,6 +18,12 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 null,
                 ARESJSEnvContext::class.java.getDeclaredMethod("getGlobalAlpha"),
                 ARESJSEnvContext::class.java.getDeclaredMethod("setGlobalAlpha", Double::class.java),
+                0)
+        this.defineProperty(
+                "globalCompositeOperation",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getGlobalCompositeOperation"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setGlobalCompositeOperation", String::class.java),
                 0)
         this.defineProperty(
                 "fillStyle",
@@ -54,7 +61,56 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 ARESJSEnvContext::class.java.getDeclaredMethod("getMiterLimit"),
                 ARESJSEnvContext::class.java.getDeclaredMethod("setMiterLimit", Double::class.java),
                 0)
+        this.defineProperty(
+                "shadowOffsetX",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowOffsetX"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowOffsetX", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowOffsetY",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowOffsetY"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowOffsetY", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowBlur",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowBlur"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowBlur", Double::class.java),
+                0)
+        this.defineProperty(
+                "shadowColor",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getShadowColor"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setShadowColor", String::class.java),
+                0)
+        this.defineProperty(
+                "font",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getFont"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setFont", String::class.java),
+                0)
+        this.defineProperty(
+                "textAlign",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getTextAlign"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setTextAlign", String::class.java),
+                0)
+        this.defineProperty(
+                "textBaseline",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getTextBaseline"),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setTextBaseline", String::class.java),
+                0)
         this.defineFunctionProperties(arrayOf(
+                "save",
+                "restore",
+                "scale",
+                "rotate",
+                "translate",
+                "transform",
+                "setTransform",
                 "fillRect",
                 "strokeRect",
                 "clearRect",
@@ -70,19 +126,55 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "arc",
                 "arcTo",
                 "clip",
-                "isPointInPath"
+                "isPointInPath",
+                "fillText",
+                "strokeText",
+                "measureText"
                 ), ARESJSEnvContext::class.java, 0)
-        print(true)
     }
 
     override fun getClassName(): String {
         return "Context"
     }
 
+    fun save() {
+        this.view.addCommand(ARESSaveCommand())
+    }
+
+    fun restore() {
+        this.view.addCommand(ARESRestoreCommand())
+    }
+
+    fun scale(x: Double, y: Double) {
+        this.view.addCommand(ARESScaleCommand(x, y))
+    }
+
+    fun rotate(angle: Double) {
+        this.view.addCommand(ARESRotateCommand(angle))
+    }
+
+    fun translate(x: Double, y: Double) {
+        this.view.addCommand(ARESTranslateCommand(x, y))
+    }
+
+    fun transform(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
+        this.view.addCommand(ARESTransformCommand(a, b, c, d, tx, ty))
+    }
+
+    fun setTransform(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
+        this.view.addCommand(ARESSetTransformCommand(a, b, c, d, tx, ty))
+    }
+
     var globalAlpha: Double = 1.0
         set(value) {
             field = value
             this.view.addCommand(ARESGlobalAlphaCommand(value))
+        }
+
+    var globalCompositeOperation: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESGlobalCompositeOperationCommand(value))
         }
 
     var fillStyle: String = ""
@@ -119,6 +211,48 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         set(value) {
             field = value
             this.view.addCommand(ARESMiterLimitCommand(value))
+        }
+
+    var shadowOffsetX: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(value, this.shadowOffsetY, this.shadowBlur, this.shadowColor))
+        }
+
+    var shadowOffsetY: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, value, this.shadowBlur, this.shadowColor))
+        }
+
+    var shadowBlur: Double = 0.0
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, this.shadowOffsetY, value, this.shadowColor))
+        }
+
+    var shadowColor: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESShadowCommand(this.shadowOffsetX, this.shadowOffsetY, this.shadowBlur, value))
+        }
+
+    var font: String = "10px"
+        set(value) {
+            field = value
+            this.view.addCommand(ARESFontCommand(value))
+        }
+
+    var textAlign: String = "left"
+        set(value) {
+            field = value
+            this.view.addCommand(ARESTextAlignCommand(value))
+        }
+
+    var textBaseline: String = ""
+        set(value) {
+            field = value
+            this.view.addCommand(ARESTextBaselineCommand(value))
         }
 
     fun fillRect(x: Double, y: Double, w: Double, h: Double) {
@@ -189,5 +323,23 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         return region.contains(x.toInt(), y.toInt())
     }
 
+    fun fillText(text: String, x: Double, y: Double, maxWidth: Double) {
+        this.view.addCommand(ARESFillTextCommand(text, x, y, maxWidth))
+    }
+
+    fun strokeText(text: String, x: Double, y: Double, maxWidth: Double) {
+        this.view.addCommand(ARESStrokeTextCommand(text, x, y, maxWidth))
+    }
+
+    fun measureText(text: String): TextMeasureResult {
+        aresStateFont?.let {
+            view.currentTextPaint.textSize = it.textSize
+            view.currentTextPaint.typeface = it.typeface
+            return TextMeasureResult(view.currentTextPaint.measureText(text).toDouble())
+        }
+        return TextMeasureResult(0.0)
+    }
+
+    class TextMeasureResult(val width: Double)
 
 }

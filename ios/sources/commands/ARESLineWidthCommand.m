@@ -7,6 +7,7 @@
 //
 
 #import "ARESLineWidthCommand.h"
+#import "ARESView.h"
 
 @implementation ARESLineWidthCommand
 
@@ -18,8 +19,9 @@
     return self;
 }
 
-- (void)draw:(CGContextRef)ctx {
+- (void)draw:(CGContextRef)ctx view:(ARESView *)view {
     CGContextSetLineWidth(ctx, self.lineWidth);
+    view.currentState.lineWidth = self.lineWidth;
 }
 
 @end

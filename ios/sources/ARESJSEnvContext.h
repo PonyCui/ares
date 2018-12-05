@@ -14,13 +14,28 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ARESJSEnvContextExport <JSExport>
 
 @property (nonatomic, assign) float globalAlpha;
+@property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;
 @property (nonatomic, strong) NSString *lineCap;
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
+@property (nonatomic, strong) NSString *font;
+@property (nonatomic, strong) NSString *textAlign;
+@property (nonatomic, strong) NSString *textBaseline;
+@property (nonatomic, assign) float shadowOffsetX;
+@property (nonatomic, assign) float shadowOffsetY;
+@property (nonatomic, assign) float shadowBlur;
+@property (nonatomic, strong) NSString *shadowColor;
 
+- (void)save;
+- (void)restore;
+JSExportAs(scale, -(void)scale:(float)x y:(float)y);
+- (void)rotate:(float)angle;
+JSExportAs(translate, -(void)translate:(float)x y:(float)y);
+JSExportAs(transform, -(void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
+JSExportAs(setTransform, -(void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
 JSExportAs(fillRect, -(void)fillRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(strokeRect, -(void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(clearRect, -(void)clearRect:(float)x y:(float)y w:(float)w h:(float)h);
@@ -37,21 +52,37 @@ JSExportAs(arc, -(void)arc:(float)x y:(float)y r:(float)r start:(float)start end
 JSExportAs(arcTo, -(void)arcTo:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 radius:(float)radius);
 - (void)clip;
 JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
+JSExportAs(fillText, -(void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
+JSExportAs(strokeText, -(void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth);
+- (NSDictionary *)measureText:(NSString *)text;
 
 @end
 
 @interface ARESJSEnvContext : NSObject <ARESJSEnvContextExport>
 
-+ (instancetype)create;
-
 @property (nonatomic, assign) float globalAlpha;
+@property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;
 @property (nonatomic, strong) NSString *lineCap;
 @property (nonatomic, strong) NSString *lineJoin;
 @property (nonatomic, assign) float miterLimit;
+@property (nonatomic, strong) NSString *font;
+@property (nonatomic, strong) NSString *textAlign;
+@property (nonatomic, strong) NSString *textBaseline;
+@property (nonatomic, assign) float shadowOffsetX;
+@property (nonatomic, assign) float shadowOffsetY;
+@property (nonatomic, assign) float shadowBlur;
+@property (nonatomic, strong) NSString *shadowColor;
 
+- (void)save;
+- (void)restore;
+- (void)scale:(float)x y:(float)y;
+- (void)rotate:(float)angle;
+- (void)translate:(float)x y:(float)y;
+- (void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
+- (void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)clearRect:(float)x y:(float)y w:(float)w h:(float)h;
@@ -68,7 +99,9 @@ JSExportAs(isPointInPath, -(BOOL)isPointInPath:(float)x y:(float)y);
 - (void)arcTo:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 radius:(float)radius;
 - (void)clip;
 - (BOOL)isPointInPath:(float)x y:(float)y;
-
+- (void)fillText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
+- (void)strokeText:(NSString *)text x:(float)x y:(float)y maxWidth:(float)maxWidth;
+- (NSDictionary *)measureText:(NSString *)text;
 
 @end
 

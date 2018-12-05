@@ -12,6 +12,9 @@ class ARESStrokeCommand: ARESCommand() {
         view.currentPaint.color = view.currentPaint.strokeColor
         view.currentPaint.style = Paint.Style.STROKE
         canvas.drawPath(view.currentPath, view.currentPaint)
+        if (ARESGlobalCompositeOperationCommand.savedLayer) {
+            ARESGlobalCompositeOperationCommand.restoreLayer(view, canvas)
+        }
     }
 
 }

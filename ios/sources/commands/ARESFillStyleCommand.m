@@ -8,6 +8,7 @@
 
 #import "ARESFillStyleCommand.h"
 #import "UIColor+ARESParser.h"
+#import "ARESView.h"
 
 @implementation ARESFillStyleCommand
 
@@ -20,8 +21,9 @@
     return self;
 }
 
-- (void)draw:(CGContextRef)ctx {
+- (void)draw:(CGContextRef)ctx view:(ARESView *)view {
     CGContextSetFillColorWithColor(ctx, self.color.CGColor);
+    view.currentState.fillColor = self.color;
 }
 
 @end

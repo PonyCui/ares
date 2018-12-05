@@ -7,11 +7,16 @@
 //
 
 #import "ARESFillCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 
 @implementation ARESFillCommand
 
 - (void)draw:(CGContextRef)ctx {
     CGContextFillPath(ctx);
+    if ([ARESGlobalCompositeOperationCommand shouldEndTrasparencyLayer]) {
+        CGContextEndTransparencyLayer(ctx);
+        [ARESGlobalCompositeOperationCommand setEndedTrasparencyLayer];
+    }
 }
 
 @end

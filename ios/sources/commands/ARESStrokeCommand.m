@@ -7,11 +7,16 @@
 //
 
 #import "ARESStrokeCommand.h"
+#import "ARESGlobalCompositeOperationCommand.h"
 
 @implementation ARESStrokeCommand
 
 - (void)draw:(CGContextRef)ctx {
     CGContextStrokePath(ctx);
+    if ([ARESGlobalCompositeOperationCommand shouldEndTrasparencyLayer]) {
+        CGContextEndTransparencyLayer(ctx);
+        [ARESGlobalCompositeOperationCommand setEndedTrasparencyLayer];
+    }
 }
 
 @end

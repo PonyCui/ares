@@ -8,6 +8,7 @@
 
 #import "ARESStrokeStyleCommand.h"
 #import "UIColor+ARESParser.h"
+#import "ARESView.h"
 
 @implementation ARESStrokeStyleCommand
 
@@ -20,8 +21,9 @@
     return self;
 }
 
-- (void)draw:(CGContextRef)ctx {
+- (void)draw:(CGContextRef)ctx view:(ARESView *)view {
     CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
+    view.currentState.strokeColor = self.color;
 }
 
 @end
