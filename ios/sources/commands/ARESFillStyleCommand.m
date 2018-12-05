@@ -7,6 +7,7 @@
 //
 
 #import "ARESFillStyleCommand.h"
+#import "UIColor+ARESParser.h"
 
 @implementation ARESFillStyleCommand
 
@@ -14,18 +15,9 @@
 {
     self = [super init];
     if (self) {
-        [self parseStaticColor:value];
+        _color = [UIColor parseColorWithValue:value];
     }
     return self;
-}
-
-- (void)parseStaticColor:(NSString *)value {
-    if ([value isEqualToString:@"red"]) {
-        self.color = [UIColor redColor];
-    }
-    else if ([value isEqualToString:@"yellow"]) {
-        self.color = [UIColor yellowColor];
-    }
 }
 
 - (void)draw:(CGContextRef)ctx {
