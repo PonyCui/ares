@@ -57,6 +57,8 @@
 		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
+		716859B121B51FFD00BF8892 /* UIColor+ARESParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */; };
+		716859B421B6F70500BF8892 /* UIColor+ARESName.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B321B6F70500BF8892 /* UIColor+ARESName.m */; };
 		63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +160,10 @@
 		6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineWidthCommand.m; sourceTree = "<group>"; };
 		6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeRectCommand.h; sourceTree = "<group>"; };
 		6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeRectCommand.m; sourceTree = "<group>"; };
+		716859AF21B51FFD00BF8892 /* UIColor+ARESParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESParser.h"; sourceTree = "<group>"; };
+		716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESParser.m"; sourceTree = "<group>"; };
+		716859B221B6F70500BF8892 /* UIColor+ARESName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESName.h"; sourceTree = "<group>"; };
+		716859B321B6F70500BF8892 /* UIColor+ARESName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESName.m"; sourceTree = "<group>"; };
 		63A45CB521B62C1E003A196A /* ARESGlobalCompositeOperationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESGlobalCompositeOperationCommand.h; sourceTree = "<group>"; };
 		63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESGlobalCompositeOperationCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +216,7 @@
 		630F003421AE83C50009D721 /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				716859AD21B51FDE00BF8892 /* Base */,
 				630F003821AE856E0009D721 /* ARESView.h */,
 				630F003921AE856E0009D721 /* ARESView.m */,
 				630F004821AE8D8B0009D721 /* ARESJSBridge.h */,
@@ -319,6 +326,25 @@
 			path = commands;
 			sourceTree = "<group>";
 		};
+		716859AD21B51FDE00BF8892 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				716859AE21B51FDE00BF8892 /* UIKit */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		716859AE21B51FDE00BF8892 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				716859B221B6F70500BF8892 /* UIColor+ARESName.h */,
+				716859B321B6F70500BF8892 /* UIColor+ARESName.m */,
+				716859AF21B51FFD00BF8892 /* UIColor+ARESParser.h */,
+				716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,11 +441,13 @@
 				6365397C21B502E8005B4A01 /* ARESStrokeTextCommand.m in Sources */,
 				6365397321B502A3005B4A01 /* ARESTextAlignCommand.m in Sources */,
 				6312650F21AFD457000AA19A /* ARESLineJoinCommand.m in Sources */,
+				716859B121B51FFD00BF8892 /* UIColor+ARESParser.m in Sources */,
 				630F004721AE8D200009D721 /* ARESFillStyleCommand.m in Sources */,
 				630F002021AE83680009D721 /* AppDelegate.m in Sources */,
 				630F003A21AE856E0009D721 /* ARESView.m in Sources */,
 				6312653021AFF8B7000AA19A /* ARESArcCommand.m in Sources */,
 				630F004321AE89450009D721 /* ARESCommand.m in Sources */,
+				716859B421B6F70500BF8892 /* UIColor+ARESName.m in Sources */,
 				6365397F21B502FC005B4A01 /* ARESMeasureTextCommand.m in Sources */,
 				6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */,
 				6312651B21AFF866000AA19A /* ARESStrokeCommand.m in Sources */,
