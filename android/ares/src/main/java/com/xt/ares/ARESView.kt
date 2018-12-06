@@ -26,10 +26,14 @@ class ARESView : View {
     constructor(context:Context, attributeSet: AttributeSet? = null, defStyleAttr: Int = 0): super(context, attributeSet, defStyleAttr) { }
 
     init {
+        ARESView.sharedContext = this.context
         this.jsContext.optimizationLevel = -1
         this.jsScope = this.jsContext.initStandardObjects()
         this.bridge.setupContext()
         this.resetCanvas()
+        this.jsContext.addPropertyChangeListener {
+            print(true)
+        }
     }
 
     fun exec(script: ARESScript): ARESHandler? {
@@ -37,7 +41,9 @@ class ARESView : View {
             this.jsContext.evaluateString(this.jsScope, "if (typeof main === 'undefined') { var main = undefined; } else { main = undefined; }", "", 0, null)
             this.jsContext.evaluateString(this.jsScope, script.evalScript, "", 0, null)
             (this.jsScope.get("main") as? Function)?.let {
-                return ARESHandler(this, it.call(this.jsContext, it, it, arrayOf(ARESJSEnvContext(this))) as? ScriptableObject)
+                val ctx = ARESJSEnvContext(this)
+                this.jsScope.put("__ctx", this.jsScope, ctx)
+                return ARESHandler(this, it.call(this.jsContext, it, it, arrayOf(ctx)) as? ScriptableObject)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -120,6 +126,12 @@ class ARESView : View {
                 canvas.drawBitmap(osBitmap, 0f, 0f, null)
             }
         }
+    }
+
+    companion object {
+
+        var sharedContext: Context? = null
+
     }
 
 }

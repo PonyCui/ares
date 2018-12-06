@@ -280,12 +280,6 @@
     return [ARESMeasureTextCommand measureText:text];
 }
 
-- (void)drawImage:(ARESJSImage *)image dx:(float)dx dy:(float)dy dw:(float)dw dh:(float)dh {
-    if (image.image != nil) {
-        
-    }
-}
-
 - (void)drawImage:(ARESJSImage *)image
            sxOrDx:(float)sxOrDx
            syOrDy:(float)syOrDy

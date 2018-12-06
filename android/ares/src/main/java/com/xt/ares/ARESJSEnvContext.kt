@@ -129,7 +129,9 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "isPointInPath",
                 "fillText",
                 "strokeText",
-                "measureText"
+                "measureText",
+                "drawImage",
+                "update"
                 ), ARESJSEnvContext::class.java, 0)
     }
 
@@ -338,6 +340,39 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
             return TextMeasureResult(view.currentTextPaint.measureText(text).toDouble())
         }
         return TextMeasureResult(0.0)
+    }
+
+    fun drawImage(image: ARESImage, sxOrDx: Double, syOrDy: Double, swOrDw: Double, shOrDh: Double, dx: Double, dy: Double, dw: Double, dh: Double) {
+        if (!dx.isNaN()) {
+            this.view.addCommand(ARESDrawImageCommand(
+                    image,
+                    dx,
+                    dy,
+                    dw,
+                    dh,
+                    sxOrDx,
+                    syOrDy,
+                    swOrDw,
+                    shOrDh
+            ))
+        }
+        else {
+            this.view.addCommand(ARESDrawImageCommand(
+                    image,
+                    sxOrDx,
+                    syOrDy,
+                    swOrDw,
+                    shOrDh,
+                    Double.NaN,
+                    Double.NaN,
+                    Double.NaN,
+                    Double.NaN
+            ))
+        }
+    }
+
+    fun update() {
+        this.view.update()
     }
 
     class TextMeasureResult(val width: Double)

@@ -3,19 +3,21 @@
  * @param {*} ctx 
  */
 
-main = function (context) {
+main = function (ctx) {
 
-    var image = new Image();               // 1. create the image: (a). create an image object
-    image.src = "horse.jpg";               //                      (b). set it to the jpg file
-    image.onload = function () {
-        context.drawImage(image, 150, 40, 130, 120, 75, 100, 200, 150);
+    ctx.translate(75, 75);
+    for (var i = 1; i < 6; i++) { // Loop through rings (from inside to out)
+        ctx.save();
+        ctx.fillStyle = 'rgb(' + (51 * i) + ',' + (255 - 51 * i) + ',255)';
+
+        for (var j = 0; j < i * 6; j++) { // draw individual dots
+            ctx.rotate(Math.PI * 2 / (i * 6));
+            ctx.beginPath();
+            ctx.arc(0, i * 12.5, 5, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
+
+        ctx.restore();
     }
-
-    // return {
-    //     fillColor: function (color) {
-    //         ctx.fillStyle = color
-    //         ctx.fillRect(88, 88, 44, 44)
-    //     }
-    // }
 
 }
