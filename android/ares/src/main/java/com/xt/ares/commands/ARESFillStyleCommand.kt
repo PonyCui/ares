@@ -6,13 +6,20 @@ import android.graphics.Paint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
 
-class ARESFillStyleCommand(value: String): ARESCommand() {
+class ARESFillStyleCommand(value: Any): ARESCommand() {
 
-    var color: Int = 0
+    var color: Int = Color.BLACK
         private set
 
+    var patternCommand: ARESCreatePatternCommand? = null
+
     init {
-        this.parseStaticValue(value)
+        (value as? String)?.let {
+            this.parseStaticValue(it)
+        }
+        (value as? ARESCreatePatternCommand)?.let {
+            this.patternCommand = value
+        }
     }
 
     fun parseStaticValue(value: String) {
@@ -25,7 +32,13 @@ class ARESFillStyleCommand(value: String): ARESCommand() {
 
     override fun draw(view: ARESView, canvas: Canvas) {
         super.draw(view, canvas)
-        view.currentPaint.fillColor = this.color
+        this.patternCommand?.let {
+            view.currentPaint.fillPattern = it
+            view.currentPaint.fillColor = Color.BLACK
+        } ?: kotlin.run {
+            view.currentPaint.fillPattern = null
+            view.currentPaint.fillColor = this.color
+        }
     }
 
 }

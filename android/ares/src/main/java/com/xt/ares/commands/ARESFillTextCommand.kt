@@ -1,7 +1,6 @@
 package com.xt.ares.commands
 
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
 import android.text.TextPaint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
@@ -12,6 +11,12 @@ class ARESFillTextCommand(val text: String, val x: Double, val y: Double, val ma
         super.draw(view, canvas)
         view.currentTextPaint.color = view.currentPaint.fillColor
         view.currentTextPaint.style = Paint.Style.FILL
+        view.currentPaint.fillPattern?.let {
+            it.image.bitmap?.let { bitmap ->
+                view.currentTextPaint.shader = BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
+                view.currentTextPaint.color = Color.BLACK
+            }
+        }
         var drawX = this.x.toFloat()
         var drawY = this.y.toFloat()
         ARESTextBaselineCommand.currentBaselineCommand?.let {

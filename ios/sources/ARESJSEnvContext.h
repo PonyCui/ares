@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDictionary *canvas;
 @property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *globalCompositeOperation;
-@property (nonatomic, strong) NSString *fillStyle;
+@property (nonatomic, strong) id fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;
 @property (nonatomic, strong) NSString *lineCap;
@@ -39,6 +39,7 @@ JSExportAs(scale, -(void)scale:(float)x y:(float)y);
 JSExportAs(translate, -(void)translate:(float)x y:(float)y);
 JSExportAs(transform, -(void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
 JSExportAs(setTransform, -(void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty);
+JSExportAs(createPattern, - (id)createPattern:(ARESJSImage *)image repetition:(NSString *)repetition);
 JSExportAs(fillRect, -(void)fillRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(strokeRect, -(void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h);
 JSExportAs(clearRect, -(void)clearRect:(float)x y:(float)y w:(float)w h:(float)h);
@@ -75,7 +76,7 @@ JSExportAs(drawImage, -(void)drawImage:(ARESJSImage *)image
 @property (nonatomic, strong) NSDictionary *canvas;
 @property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *globalCompositeOperation;
-@property (nonatomic, strong) NSString *fillStyle;
+@property (nonatomic, strong) id fillStyle;
 @property (nonatomic, strong) NSString *strokeStyle;
 @property (nonatomic, assign) float lineWidth;
 @property (nonatomic, strong) NSString *lineCap;
@@ -96,6 +97,7 @@ JSExportAs(drawImage, -(void)drawImage:(ARESJSImage *)image
 - (void)translate:(float)x y:(float)y;
 - (void)transform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
 - (void)setTransform:(float)a b:(float)b c:(float)c d:(float)d tx:(float)tx ty:(float)ty;
+- (id)createPattern:(ARESJSImage *)image repetition:(NSString *)repetition;
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)strokeRect:(float)x y:(float)y w:(float)w h:(float)h;
 - (void)clearRect:(float)x y:(float)y w:(float)w h:(float)h;

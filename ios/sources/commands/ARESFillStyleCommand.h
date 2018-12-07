@@ -10,11 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ARESCreatePatternCommand;
+
 @interface ARESFillStyleCommand : ARESCommand
 
 @property (nonatomic, strong) UIColor *color;
 
-- (instancetype)initWithValue:(NSString *)value;
+- (instancetype)initWithValue:(id)value;
 
 @end
 

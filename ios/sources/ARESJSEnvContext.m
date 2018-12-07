@@ -20,6 +20,7 @@
 #import "ARESGlobalCompositeOperationCommand.h"
 #import "ARESFillStyleCommand.h"
 #import "ARESStrokeStyleCommand.h"
+#import "ARESCreatePatternCommand.h"
 #import "ARESLineWidthCommand.h"
 #import "ARESLineCapCommand.h"
 #import "ARESLineJoinCommand.h"
@@ -110,7 +111,7 @@
     [self addCommandToView:[[ARESGlobalCompositeOperationCommand alloc] initWithValue:globalCompositeOperation]];
 }
 
-- (void)setFillStyle:(NSString *)fillStyle {
+- (void)setFillStyle:(id)fillStyle {
     _fillStyle = fillStyle;
     [self addCommandToView:[[ARESFillStyleCommand alloc] initWithValue:fillStyle]];
 }
@@ -170,6 +171,10 @@
                                                               y:self.shadowOffsetY
                                                            blur:self.shadowBlur
                                                     colorString:shadowColor]];
+}
+
+- (id)createPattern:(ARESJSImage *)image repetition:(NSString *)repetition {
+    return [[ARESCreatePatternCommand alloc] initWithImage:image repetition:repetition];
 }
 
 - (void)fillRect:(float)x y:(float)y w:(float)w h:(float)h {

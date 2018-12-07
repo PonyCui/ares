@@ -57,12 +57,14 @@
 		6383E35721AF86FE007560D4 /* ARESStrokeStyleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */; };
 		6383E35A21AF8763007560D4 /* ARESLineWidthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */; };
 		6383E35D21AFC921007560D4 /* ARESStrokeRectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */; };
-		716859B121B51FFD00BF8892 /* UIColor+ARESParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */; };
-		716859B421B6F70500BF8892 /* UIColor+ARESName.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B321B6F70500BF8892 /* UIColor+ARESName.m */; };
 		63A45CB721B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */; };
 		63A45CBA21B6879B003A196A /* ARESJSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CB921B6879B003A196A /* ARESJSImage.m */; };
 		63A45CBC21B68982003A196A /* horse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63A45CBB21B68982003A196A /* horse.jpg */; };
 		63A45CBF21B68D28003A196A /* ARESDrawImageCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CBE21B68D28003A196A /* ARESDrawImageCommand.m */; };
+		63A45CC221BA3F8E003A196A /* ARESCreatePatternCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A45CC121BA3F8E003A196A /* ARESCreatePatternCommand.m */; };
+		63A45CC421BA4814003A196A /* grayhorse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63A45CC321BA4814003A196A /* grayhorse.jpg */; };
+		716859B121B51FFD00BF8892 /* UIColor+ARESParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */; };
+		716859B421B6F70500BF8892 /* UIColor+ARESName.m in Sources */ = {isa = PBXBuildFile; fileRef = 716859B321B6F70500BF8892 /* UIColor+ARESName.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,10 +165,6 @@
 		6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESLineWidthCommand.m; sourceTree = "<group>"; };
 		6383E35B21AFC921007560D4 /* ARESStrokeRectCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESStrokeRectCommand.h; sourceTree = "<group>"; };
 		6383E35C21AFC921007560D4 /* ARESStrokeRectCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESStrokeRectCommand.m; sourceTree = "<group>"; };
-		716859AF21B51FFD00BF8892 /* UIColor+ARESParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESParser.h"; sourceTree = "<group>"; };
-		716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESParser.m"; sourceTree = "<group>"; };
-		716859B221B6F70500BF8892 /* UIColor+ARESName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESName.h"; sourceTree = "<group>"; };
-		716859B321B6F70500BF8892 /* UIColor+ARESName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESName.m"; sourceTree = "<group>"; };
 		63A45CB521B62C1E003A196A /* ARESGlobalCompositeOperationCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESGlobalCompositeOperationCommand.h; sourceTree = "<group>"; };
 		63A45CB621B62C1E003A196A /* ARESGlobalCompositeOperationCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESGlobalCompositeOperationCommand.m; sourceTree = "<group>"; };
 		63A45CB821B6879B003A196A /* ARESJSImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESJSImage.h; sourceTree = "<group>"; };
@@ -174,6 +172,13 @@
 		63A45CBB21B68982003A196A /* horse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = horse.jpg; sourceTree = "<group>"; };
 		63A45CBD21B68D28003A196A /* ARESDrawImageCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESDrawImageCommand.h; sourceTree = "<group>"; };
 		63A45CBE21B68D28003A196A /* ARESDrawImageCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESDrawImageCommand.m; sourceTree = "<group>"; };
+		63A45CC021BA3F8E003A196A /* ARESCreatePatternCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARESCreatePatternCommand.h; sourceTree = "<group>"; };
+		63A45CC121BA3F8E003A196A /* ARESCreatePatternCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARESCreatePatternCommand.m; sourceTree = "<group>"; };
+		63A45CC321BA4814003A196A /* grayhorse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grayhorse.jpg; sourceTree = "<group>"; };
+		716859AF21B51FFD00BF8892 /* UIColor+ARESParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESParser.h"; sourceTree = "<group>"; };
+		716859B021B51FFD00BF8892 /* UIColor+ARESParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESParser.m"; sourceTree = "<group>"; };
+		716859B221B6F70500BF8892 /* UIColor+ARESName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ARESName.h"; sourceTree = "<group>"; };
+		716859B321B6F70500BF8892 /* UIColor+ARESName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ARESName.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +213,7 @@
 		630F001D21AE83670009D721 /* ares */ = {
 			isa = PBXGroup;
 			children = (
+				63A45CC321BA4814003A196A /* grayhorse.jpg */,
 				63A45CBB21B68982003A196A /* horse.jpg */,
 				630F001E21AE83670009D721 /* AppDelegate.h */,
 				630F001F21AE83680009D721 /* AppDelegate.m */,
@@ -281,6 +287,8 @@
 				630F004621AE8D200009D721 /* ARESFillStyleCommand.m */,
 				6383E35521AF86FE007560D4 /* ARESStrokeStyleCommand.h */,
 				6383E35621AF86FE007560D4 /* ARESStrokeStyleCommand.m */,
+				63A45CC021BA3F8E003A196A /* ARESCreatePatternCommand.h */,
+				63A45CC121BA3F8E003A196A /* ARESCreatePatternCommand.m */,
 				6383E35821AF8763007560D4 /* ARESLineWidthCommand.h */,
 				6383E35921AF8763007560D4 /* ARESLineWidthCommand.m */,
 				6312650A21AFD427000AA19A /* ARESLineCapCommand.h */,
@@ -420,6 +428,7 @@
 				630F002B21AE83690009D721 /* LaunchScreen.storyboard in Resources */,
 				63A45CBC21B68982003A196A /* horse.jpg in Resources */,
 				630F002821AE83690009D721 /* Assets.xcassets in Resources */,
+				63A45CC421BA4814003A196A /* grayhorse.jpg in Resources */,
 				630F002621AE83680009D721 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +461,7 @@
 				6312654221B14BA4000AA19A /* ARESScaleCommand.m in Sources */,
 				630F002E21AE83690009D721 /* main.m in Sources */,
 				6312652421AFF887000AA19A /* ARESMoveToCommand.m in Sources */,
+				63A45CC221BA3F8E003A196A /* ARESCreatePatternCommand.m in Sources */,
 				6312650C21AFD427000AA19A /* ARESLineCapCommand.m in Sources */,
 				6365397C21B502E8005B4A01 /* ARESStrokeTextCommand.m in Sources */,
 				6365397321B502A3005B4A01 /* ARESTextAlignCommand.m in Sources */,

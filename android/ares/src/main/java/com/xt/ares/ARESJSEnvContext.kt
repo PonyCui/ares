@@ -8,6 +8,7 @@ import org.mozilla.javascript.ScriptableObject
 import android.R.attr.path
 import android.graphics.RectF
 import org.json.JSONObject
+import org.mozilla.javascript.NativeJavaObject
 
 class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
 
@@ -34,7 +35,7 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "fillStyle",
                 null,
                 ARESJSEnvContext::class.java.getDeclaredMethod("getFillStyle"),
-                ARESJSEnvContext::class.java.getDeclaredMethod("setFillStyle", String::class.java),
+                ARESJSEnvContext::class.java.getDeclaredMethod("setFillStyle", Object::class.java),
                 0)
         this.defineProperty(
                 "strokeStyle",
@@ -116,6 +117,7 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
                 "translate",
                 "transform",
                 "setTransform",
+                "createPattern",
                 "fillRect",
                 "strokeRect",
                 "clearRect",
@@ -177,6 +179,10 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
         this.view.addCommand(ARESSetTransformCommand(a, b, c, d, tx, ty))
     }
 
+    fun createPattern(image: ARESImage, repetition: String): ARESCreatePatternCommand {
+        return ARESCreatePatternCommand(image, repetition)
+    }
+
     var globalAlpha: Double = 1.0
         set(value) {
             field = value
@@ -189,10 +195,15 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
             this.view.addCommand(ARESGlobalCompositeOperationCommand(value))
         }
 
-    var fillStyle: String = ""
+    var fillStyle: Any = ""
         set(value) {
             field = value
-            this.view.addCommand(ARESFillStyleCommand(value))
+            (value as? String)?.let {
+                this.view.addCommand(ARESFillStyleCommand(it))
+            }
+            (value as? NativeJavaObject)?.let {
+                this.view.addCommand(ARESFillStyleCommand(it.unwrap()))
+            }
         }
 
     var strokeStyle: String = ""

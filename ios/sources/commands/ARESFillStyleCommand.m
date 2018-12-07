@@ -9,14 +9,20 @@
 #import "ARESFillStyleCommand.h"
 #import "UIColor+ARESParser.h"
 #import "ARESView.h"
+#import "ARESCreatePatternCommand.h"
 
 @implementation ARESFillStyleCommand
 
-- (instancetype)initWithValue:(NSString *)value
+- (instancetype)initWithValue:(id)value
 {
     self = [super init];
     if (self) {
-        _color = [UIColor ares_parseColorWithValue:value];
+        if ([value isKindOfClass:[NSString class]]) {
+            _color = [UIColor ares_parseColorWithValue:value];
+        }
+        else if ([value isKindOfClass:[ARESCreatePatternCommand class]]) {
+            _color = [(ARESCreatePatternCommand *)value color];
+        }
     }
     return self;
 }
