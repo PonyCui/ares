@@ -61,6 +61,17 @@
     return self;
 }
 
+- (NSDictionary *)canvas {
+    ARESView *view = [ARESJSBridge viewWithContext:[JSContext currentContext]];
+    return @{
+             @"width": @(view.bounds.size.width),
+             @"height": @(view.bounds.size.height),
+             @"getContext": ^ {
+                 return self;
+             },
+             };
+}
+
 - (void)save {
     [self addCommandToView:[[ARESSaveCommand alloc] init]];
 }

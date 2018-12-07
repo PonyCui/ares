@@ -13,11 +13,12 @@
     <script src="/web/index.js"></script>
     <script>
         ares.exec(
-            document.getElementById('sampleCanvas').getContext('2d'),
+            document.getElementById('sampleCanvas'),
             '../scripts/drawCircle.js',
             function (handler) {
                 setTimeout(() => {
-                    handler.fillColor("yellow")
+                    document.getElementById('sampleCanvas').width = 300
+                    // handler.fillColor("yellow")
                 }, 3000)
             }
         )

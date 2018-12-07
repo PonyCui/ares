@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ARESJSEnvContextExport <JSExport>
 
+@property (nonatomic, strong) NSDictionary *canvas;
 @property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;
@@ -71,6 +72,7 @@ JSExportAs(drawImage, -(void)drawImage:(ARESJSImage *)image
 
 @interface ARESJSEnvContext : NSObject <ARESJSEnvContextExport>
 
+@property (nonatomic, strong) NSDictionary *canvas;
 @property (nonatomic, assign) float globalAlpha;
 @property (nonatomic, strong) NSString *globalCompositeOperation;
 @property (nonatomic, strong) NSString *fillStyle;

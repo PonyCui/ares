@@ -1,11 +1,37 @@
 export const exec = (
-    canvasContext: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement,
     executor: string | Function,
     resolver: (handler: any) => void,
     rejector: (error: Error | undefined) => void) => {
+    let handler: any = {}
+    try {
+        Object.defineProperty(canvas, "width", {
+            configurable: true,
+            get: function () {
+                return parseInt(this.getAttribute("width"))
+            },
+            set: function (value) {
+                this.setAttribute("width", value.toString())
+                handler.onResize && handler.onResize()
+            }
+        })
+        Object.defineProperty(canvas, "height", {
+            configurable: true,
+            get: function () {
+                return parseInt(this.getAttribute("height"))
+            },
+            set: function (value) {
+                this.setAttribute("height", value.toString())
+                handler.onResize && handler.onResize()
+            }
+        })
+    } catch (error) {
+        console.error(error)
+    }
     if (typeof executor === "function") {
         try {
-            resolver && resolver(executor(canvasContext) || {})
+            handler = executor(canvas.getContext('2d')) || {}
+            resolver && resolver(handler)
         } catch (error) {
             rejector && rejector(error)
         }
@@ -17,8 +43,9 @@ export const exec = (
             try {
                 let main: any = undefined
                 eval(request.responseText)
+                handler = main(canvas.getContext('2d') || {})
                 if (typeof main === "function") {
-                    resolver && resolver(main(canvasContext) || {})
+                    resolver && resolver(handler)
                 }
                 else {
                     throw Error("main function not found.")

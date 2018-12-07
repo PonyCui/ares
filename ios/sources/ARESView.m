@@ -11,11 +11,13 @@
 #import "ARESCommand.h"
 #import "ARESJSBridge.h"
 #import "ARESJSEnvContext.h"
+#import "ARESHandler.h"
 
 @interface ARESView ()
 
 @property (nonatomic, strong) JSContext *context;
 @property (nonatomic, strong) ARESJSBridge *bridge;
+@property (nonatomic, strong) ARESHandler *handler;
 @property (nonatomic, strong) NSMutableArray<ARESCommand *> *commands;
 @property (nonatomic, strong) NSMutableArray<ARESState *> *states;
 @property (nonatomic, assign) CGContextRef cgContext;
@@ -74,12 +76,16 @@
     [self update];
     handler.managedValue = [JSManagedValue managedValueWithValue:value];
     handler.view = self;
+    self.handler = handler;
     return handler;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self resetCGContext];
+    if (self.handler != nil) {
+        [self.handler invokeMethod:@"onResize" arguments:nil];
+    }
 }
 
 - (void)resetCGContext {
@@ -93,7 +99,7 @@
         CGBitmapContextGetHeight(oldContext) == self.bounds.size.height) {
         return;
     }
-    CGImageRef oldImage = oldContext != NULL ? CGBitmapContextCreateImage(oldContext) : NULL;
+    [self releaseCGContext];
     self.cgContext = CGBitmapContextCreate(NULL,
                                            self.bounds.size.width,
                                            self.bounds.size.height,
@@ -104,15 +110,6 @@
     [self.states removeAllObjects];
     [self.states addObject:[[ARESState alloc] init]];
     CGContextSetTextMatrix(self.cgContext, CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0));
-    if (oldImage != NULL) {
-        CGContextDrawImage(self.cgContext,
-                           CGRectMake(0, 0, CGImageGetWidth(oldImage), CGImageGetHeight(oldImage)),
-                           oldImage);
-        CGImageRelease(oldImage);
-    }
-    if (oldContext != NULL) {
-        CGContextRelease(oldContext);
-    }
     [self update];
 }
 

@@ -13,6 +13,7 @@ class ARESView : View {
 
     internal val jsContext: org.mozilla.javascript.Context = org.mozilla.javascript.Context.enter()
     internal val jsScope: ScriptableObject
+    private var jsHandler: ARESHandler? = null
     internal val bridge = ARESJSBridge(jsContext, this)
     internal val commands: MutableList<ARESCommand> = mutableListOf()
     internal var currentPaint = ARESPaint()
@@ -43,7 +44,8 @@ class ARESView : View {
             (this.jsScope.get("main") as? Function)?.let {
                 val ctx = ARESJSEnvContext(this)
                 this.jsScope.put("__ctx", this.jsScope, ctx)
-                return ARESHandler(this, it.call(this.jsContext, it, it, arrayOf(ctx)) as? ScriptableObject)
+                this.jsHandler = ARESHandler(this, it.call(this.jsContext, it, it, arrayOf(ctx)) as? ScriptableObject)
+                return this.jsHandler
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -55,6 +57,7 @@ class ARESView : View {
         super.onLayout(changed, left, top, right, bottom)
         if (changed) {
             this.resetCanvas()
+            this.jsHandler?.invokeMethod("onResize")
         }
     }
 
@@ -66,12 +69,9 @@ class ARESView : View {
         this.osBitmap?.takeIf { it.width == this.width && it.height == this.height }?.let {
             return
         }
-        val oldImage = this.osBitmap
+        this.osBitmap?.recycle()
         this.osBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888)
         this.osCanvas = Canvas(this.osBitmap)
-        oldImage?.let {
-            this.osCanvas?.drawBitmap(it, 0.0f, 0.0f, null)
-        }
         this.osCanvas?.scale(this.resources.displayMetrics.density, this.resources.displayMetrics.density)
         this.update()
     }

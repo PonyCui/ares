@@ -9,10 +9,15 @@ import android.R.attr.path
 import android.graphics.RectF
 import org.json.JSONObject
 
-
 class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
 
     init {
+        this.defineProperty(
+                "canvas",
+                null,
+                ARESJSEnvContext::class.java.getDeclaredMethod("getCanvas"),
+                null,
+                0)
         this.defineProperty(
                 "globalAlpha",
                 null,
@@ -138,6 +143,11 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
     override fun getClassName(): String {
         return "Context"
     }
+
+    var canvas: ARESJSCanvasObject? = null
+        get() {
+            return ARESJSCanvasObject(this.view, this)
+        }
 
     fun save() {
         this.view.addCommand(ARESSaveCommand())
@@ -376,5 +386,45 @@ class ARESJSEnvContext(val view: ARESView): ScriptableObject() {
     }
 
     class TextMeasureResult(val width: Double)
+
+}
+
+class ARESJSCanvasObject(val view: ARESView, val ctx: ARESJSEnvContext): ScriptableObject() {
+
+    init {
+        this.defineProperty(
+                "width",
+                null,
+                ARESJSCanvasObject::class.java.getDeclaredMethod("getWidth"),
+                null,
+                0)
+        this.defineProperty(
+                "height",
+                null,
+                ARESJSCanvasObject::class.java.getDeclaredMethod("getHeight"),
+                null,
+                0)
+        this.defineFunctionProperties(arrayOf(
+                "getContext"
+        ), ARESJSCanvasObject::class.java, 0)
+    }
+
+    override fun getClassName(): String {
+        return "Canvas"
+    }
+
+    var width: Double = 0.0
+        get() {
+            return (this.view.width / this.view.resources.displayMetrics.density).toDouble()
+        }
+
+    var height: Double = 0.0
+        get() {
+            return (this.view.height / this.view.resources.displayMetrics.density).toDouble()
+        }
+
+    fun getContext(): ARESJSEnvContext {
+        return this.ctx
+    }
 
 }
