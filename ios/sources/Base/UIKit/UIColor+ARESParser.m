@@ -10,14 +10,11 @@
 #import "UIColor+ARESName.h"
 
 @implementation UIColor (ARESParser)
-
+    
 + (instancetype)ares_parseColorWithValue:(NSString *)value {
-
-//    NSString *abbr = @"^#([a-f0-9]{3,4})$";
-//    NSString *hex = @"^#([a-f0-9]{6})([a-f0-9]{2})?$";
-
-//    NSString *per = @"^rgba?\(\\s*([+-]?[\\d\\.]+)\%\\s*,\\s*([+-]?[\\d\\.]+)\%\\s*,\\s*([+-]?[\\d\\.]+)\%\\s*(?:,\\s*([+-]?[\\d\\.]+)\\s*)?\\)$";
-//    NSString *keyword = @"(\\D+)";
+    // remore spacing
+    value = [value stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     if ([value containsString:@"rgb"]) {
         return [self parseRGBColorWithValue:value];
     } else if ([value containsString:@"hsl"]) {
@@ -28,30 +25,48 @@
         return [self parseHEXColorWithValue:value];
     }
 }
-
+    
 + (instancetype)parseRGBColorWithValue:(NSString *)value {
     
-    //    NSString *rgba = @"^rgba?\(\\s*([+-]?\\d+)\\s*,\\s*([+-]?\\d+)\\s*,\\s*([+-]?\\d+)\\s*(?:,\\s*([+-]?[\\d\\.]+)\\s*)?\\)$";
-    
-    NSString *rgbaPattern = @"^rgba?\(\\s*([+-]?\\d+)\\s*,\\s*([+-]?\\d+)\\s*,\\s*([+-]?\\d+)\\s*(?:,\\s*([+-]?[\\d\\.]+)\\s*)?\\)$";
+    NSString *rgbaPattern = @"^[rR][gG][Bb][Aa]?[\(]((2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),){2}(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),?(0.d{1,2}|1|0)?[)]{1}$";
     NSRegularExpression *rgbaRegular = [[NSRegularExpression alloc] initWithPattern:rgbaPattern
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
-    NSArray *hexResults = [rgbaRegular matchesInString:value options:NSMatchingReportProgress range:NSMakeRange(0, value.length)];
-    if (hexResults.count > 0) {
+    NSArray *rgbaResults = [rgbaRegular matchesInString:value options:NSMatchingReportProgress range:NSMakeRange(0, value.length)];
+    if (rgbaResults.count > 0) {
+        NSTextCheckingResult *result = rgbaResults.firstObject;
+        NSString *colorString = [value substringWithRange:result.range];
+        NSString *removeRGBAString = [colorString stringByReplacingOccurrencesOfString:@"rgba(" withString:@""];
+        NSString *removeRGBString = [removeRGBAString stringByReplacingOccurrencesOfString:@"rgb(" withString:@""];
+        NSString *resultString = [removeRGBString stringByReplacingOccurrencesOfString:@")" withString:@""];
+        
+        NSArray *resultArray = [resultString componentsSeparatedByString:@","];
+        if (resultArray.count == 3) {
+            return [UIColor colorWithRed: [resultArray[0] floatValue] / 255.0
+                                   green: [resultArray[1] floatValue] / 255.0
+                                    blue: [resultArray[2] floatValue] / 255.0
+                                   alpha: 1];
+        }
+        
+        if (resultArray.count == 4) {
+            return [UIColor colorWithRed: [resultArray[0] floatValue] / 255.0
+                                   green: [resultArray[1] floatValue] / 255.0
+                                    blue: [resultArray[2] floatValue] / 255.0
+                                   alpha: [resultArray[3] floatValue]];
+        }
     }
-    
-    return nil;
+    // The default value is 'black'
+    return [UIColor blackColor];
 }
-
+    
 + (instancetype)parseHSLColorWithValue:(NSString *)value {
     return nil;
 }
-
+    
 + (instancetype)parseHWBColorWithValue:(NSString *)value {
     return nil;
 }
-
+    
 + (instancetype)parseHEXColorWithValue:(NSString *)value {
     
     NSString *hexPattern = @"^#([a-f0-9]{6})([a-f0-9]{2})?$";
@@ -66,31 +81,31 @@
         
         switch ([colorString length]) {
             case 3: // #RGB
-                alpha = 1.0f;
-                red   = [self parseComponentFrom: colorString start: 0 length: 1];
-                green = [self parseComponentFrom: colorString start: 1 length: 1];
-                blue  = [self parseComponentFrom: colorString start: 2 length: 1];
-                break;
-            case 4: // #ARGB
-                alpha = [self parseComponentFrom: colorString start: 0 length: 1];
-                red   = [self parseComponentFrom: colorString start: 1 length: 1];
-                green = [self parseComponentFrom: colorString start: 2 length: 1];
-                blue  = [self parseComponentFrom: colorString start: 3 length: 1];
-                break;
+            alpha = 1.0f;
+            red   = [self parseComponentFrom: colorString start: 0 length: 1];
+            green = [self parseComponentFrom: colorString start: 1 length: 1];
+            blue  = [self parseComponentFrom: colorString start: 2 length: 1];
+            break;
+            case 4: // #RGBA
+            blue  = [self parseComponentFrom: colorString start: 0 length: 1];
+            red   = [self parseComponentFrom: colorString start: 1 length: 1];
+            green = [self parseComponentFrom: colorString start: 2 length: 1];
+            alpha = [self parseComponentFrom: colorString start: 3 length: 1];
+            break;
             case 6: // #RRGGBB
-                alpha = 1.0f;
-                red   = [self parseComponentFrom: colorString start: 0 length: 2];
-                green = [self parseComponentFrom: colorString start: 2 length: 2];
-                blue  = [self parseComponentFrom: colorString start: 4 length: 2];
-                break;
-            case 8: // #AARRGGBB
-                alpha = [self parseComponentFrom: colorString start: 0 length: 2];
-                red   = [self parseComponentFrom: colorString start: 2 length: 2];
-                green = [self parseComponentFrom: colorString start: 4 length: 2];
-                blue  = [self parseComponentFrom: colorString start: 6 length: 2];
-                break;
+            alpha = 1.0f;
+            red   = [self parseComponentFrom: colorString start: 0 length: 2];
+            green = [self parseComponentFrom: colorString start: 2 length: 2];
+            blue  = [self parseComponentFrom: colorString start: 4 length: 2];
+            break;
+            case 8: // #RRGGBBAA
+            blue  = [self parseComponentFrom: colorString start: 0 length: 2];
+            red   = [self parseComponentFrom: colorString start: 2 length: 2];
+            green = [self parseComponentFrom: colorString start: 4 length: 2];
+            alpha = [self parseComponentFrom: colorString start: 6 length: 2];
+            break;
             default:
-                return nil;
+            return nil;
         }
         return [UIColor colorWithRed: red
                                green: green
@@ -106,7 +121,7 @@
     // The default value is 'black'
     return [self ares_colorWithColorName:value];
 }
-
+    
 + (CGFloat)parseComponentFrom:(NSString *)string start:(NSUInteger)start length:(NSUInteger)length {
     NSString *substring = [string substringWithRange: NSMakeRange(start, length)];
     NSString *fullHex = length == 2 ? substring : [NSString stringWithFormat: @"%@%@", substring, substring];
@@ -114,4 +129,5 @@
     [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
     return hexComponent / 255.0;
 }
+
 @end
