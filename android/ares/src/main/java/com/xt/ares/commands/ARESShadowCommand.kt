@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
+import com.xt.ares.common.ARESColorUtils
 
 class ARESShadowCommand(val x: Double, val y: Double, val blur: Double, val colorString: String): ARESCommand() {
 
@@ -11,15 +12,7 @@ class ARESShadowCommand(val x: Double, val y: Double, val blur: Double, val colo
         private set
 
     init {
-        this.parseStaticValue(this.colorString)
-    }
-
-    fun parseStaticValue(value: String) {
-        this.color = when (value) {
-            "red" -> Color.RED
-            "yellow" -> Color.YELLOW
-            else -> 0
-        }
+        this.color = ARESColorUtils.parseColorWithValue(this.colorString)
     }
 
     override fun draw(view: ARESView, canvas: Canvas) {

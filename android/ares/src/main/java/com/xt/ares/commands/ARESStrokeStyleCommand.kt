@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
+import com.xt.ares.common.ARESColorUtils
 
 class ARESStrokeStyleCommand(value: String): ARESCommand() {
 
@@ -12,15 +13,7 @@ class ARESStrokeStyleCommand(value: String): ARESCommand() {
         private set
 
     init {
-        this.parseStaticValue(value)
-    }
-
-    fun parseStaticValue(value: String) {
-        this.color = when (value) {
-            "red" -> Color.RED
-            "yellow" -> Color.YELLOW
-            else -> 0
-        }
+        this.color = ARESColorUtils.parseColorWithValue(value)
     }
 
     override fun draw(view: ARESView, canvas: Canvas) {

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.xt.ares.ARESCommand
 import com.xt.ares.ARESView
+import com.xt.ares.common.ARESColorUtils
 
 class ARESFillStyleCommand(value: Any): ARESCommand() {
 
@@ -15,18 +16,10 @@ class ARESFillStyleCommand(value: Any): ARESCommand() {
 
     init {
         (value as? String)?.let {
-            this.parseStaticValue(it)
+            this.color = ARESColorUtils.parseColorWithValue(value)
         }
         (value as? ARESCreatePatternCommand)?.let {
             this.patternCommand = value
-        }
-    }
-
-    fun parseStaticValue(value: String) {
-        this.color = when (value) {
-            "red" -> Color.RED
-            "yellow" -> Color.YELLOW
-            else -> 0
         }
     }
 
